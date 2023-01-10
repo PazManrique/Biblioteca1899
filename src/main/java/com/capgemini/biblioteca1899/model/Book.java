@@ -2,13 +2,15 @@ package com.capgemini.biblioteca1899.model;
 
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,17 +32,20 @@ public class Book {
 	@Column
 	private String nacionality;
 	@Column
-	private String bookType;
-	@Column
+	@Enumerated(EnumType.STRING)
+	private BookType type;
+	@OneToOne
+	@JoinColumn(name="copy_id")
 	private Long copyId;
 	
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	public Book(Long id, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
-			String nacionality, String bookType, Long copyId) {
+			String nacionality, BookType type, Long copyId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -49,9 +54,10 @@ public class Book {
 		this.authorName = authorName;
 		this.authorBirthDate = authorBirthDate;
 		this.nacionality = nacionality;
-		this.bookType = bookType;
+		this.type = type;
 		this.copyId = copyId;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -109,12 +115,12 @@ public class Book {
 		this.nacionality = nacionality;
 	}
 
-	public String getBookType() {
-		return bookType;
+	public BookType getType() {
+		return type;
 	}
 
-	public void setBookType(String bookType) {
-		this.bookType = bookType;
+	public void setType(BookType type) {
+		this.type = type;
 	}
 
 	public Long getCopyId() {
@@ -124,8 +130,7 @@ public class Book {
 	public void setCopyId(Long copyId) {
 		this.copyId = copyId;
 	}
-	
-	
+
 	
 	
 }

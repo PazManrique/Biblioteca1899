@@ -2,6 +2,8 @@ package com.capgemini.biblioteca1899.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,7 +16,10 @@ public class Copy {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long copyId;
 	@Column
-	private String copyState;
+	private Long id;
+	@Column
+	@Enumerated(EnumType.STRING)
+	private CopyState state;
 	
 	
 	public Copy() {
@@ -22,26 +27,44 @@ public class Copy {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Copy(Long copyId, String copyState) {
+
+	public Copy(Long copyId, Long id, CopyState state) {
 		super();
 		this.copyId = copyId;
-		this.copyState = copyState;
+		this.id = id;
+		this.state = state;
 	}
 
-	public Long getcopyId() {
+
+	public Long getCopyId() {
 		return copyId;
 	}
 
-	public void setcopyId(Long copyId) {
+
+	public void setCopyId(Long copyId) {
 		this.copyId = copyId;
 	}
 
-	public String getCopyState() {
-		return copyState;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setCopyState(String copyState) {
-		this.copyState = copyState;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
+
+	public CopyState getState() {
+		return state;
+	}
+
+
+	public void setState(CopyState state) {
+		this.state = state;
+	}
+
+	
 	
 }
