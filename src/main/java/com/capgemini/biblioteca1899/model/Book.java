@@ -1,8 +1,8 @@
 package com.capgemini.biblioteca1899.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,8 +26,8 @@ public class Book {
 	@Column
 	private String authorName;
 	@Column
-	@JsonFormat(pattern = "ddMMyyyy")
-	private Date authorBirthDate;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate authorBirthDate;
 	@Column
 	private String nacionality;
 	@Column
@@ -38,7 +38,7 @@ public class Book {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(Long id, String title, String editorial, Integer year, String authorName, Date authorBirthDate,
+	public Book(Long id, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
 			String nacionality, String bookType) {
 		super();
 		this.id = id;
@@ -91,11 +91,11 @@ public class Book {
 		this.authorName = authorName;
 	}
 
-	public Date getAuthorBirthDate() {
+	public LocalDate getAuthorBirthDate() {
 		return authorBirthDate;
 	}
 
-	public void setAuthorBirthDate(Date authorBirthDate) {
+	public void setAuthorBirthDate(LocalDate authorBirthDate) {
 		this.authorBirthDate = authorBirthDate;
 	}
 
