@@ -26,12 +26,13 @@ public class Book {
 	@Column
 	private String authorName;
 	@Column
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate authorBirthDate;
 	@Column
 	private String nacionality;
 	@Column
 	private String bookType;
+	@Column
+	private Long copyId;
 	
 	public Book() {
 		super();
@@ -39,7 +40,7 @@ public class Book {
 	}
 
 	public Book(Long id, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
-			String nacionality, String bookType) {
+			String nacionality, String bookType, Long copyId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -49,6 +50,7 @@ public class Book {
 		this.authorBirthDate = authorBirthDate;
 		this.nacionality = nacionality;
 		this.bookType = bookType;
+		this.copyId = copyId;
 	}
 
 	public Long getId() {
@@ -113,6 +115,14 @@ public class Book {
 
 	public void setBookType(String bookType) {
 		this.bookType = bookType;
+	}
+
+	public Long getCopyId() {
+		return copyId;
+	}
+
+	public void setCopyId(Long copyId) {
+		this.copyId = copyId;
 	}
 	
 	
