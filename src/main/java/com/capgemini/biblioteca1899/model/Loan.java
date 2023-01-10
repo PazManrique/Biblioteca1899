@@ -20,19 +20,19 @@ public class Loan {
 	@Column
 	private Date endDate;
 	@Column
-	private Long idReader;
+	private Long memberNumber;
 	
 	public Loan() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Loan(Long id, Date startDate, Date endDate, Long idReader) {
+	public Loan(Long id, Date startDate, Date endDate, Long memberNumber) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.idReader = idReader;
+		this.memberNumber = memberNumber;
 	}
 
 	public Long getId() {
@@ -59,12 +59,12 @@ public class Loan {
 		this.endDate = endDate;
 	}
 
-	public Long getIdReader() {
-		return idReader;
+	public Long getmemberNumber() {
+		return memberNumber;
 	}
 
-	public void setIdReader(Long idReader) {
-		this.idReader = idReader;
+	public void setmemberNumber(Long memberNumber) {
+		this.memberNumber = memberNumber;
 	}
 	
 	
