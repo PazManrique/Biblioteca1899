@@ -1,5 +1,13 @@
 package com.capgemini.biblioteca1899.model;
 
-public class Book {
+import java.util.Date;
 
+public class Book {
+	
+	String title;
+	String editorial;
+	Integer year;
+	String authorName;
+	Date authorBirthDate;
+	String nacionality;
 }
