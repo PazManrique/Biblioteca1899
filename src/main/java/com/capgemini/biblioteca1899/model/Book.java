@@ -2,6 +2,8 @@ package com.capgemini.biblioteca1899.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +26,7 @@ public class Book {
 	@Column
 	private String authorName;
 	@Column
+	@JsonFormat(pattern = "ddMMyyyy")
 	private Date authorBirthDate;
 	@Column
 	private String nacionality;
