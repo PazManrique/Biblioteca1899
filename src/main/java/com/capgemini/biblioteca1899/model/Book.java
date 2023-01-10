@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Books")
+@Table(name="books")
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +30,11 @@ public class Book {
 	@Column
 	private String bookType;
 	
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Book(Long id, String title, String editorial, Integer year, String authorName, Date authorBirthDate,
 			String nacionality, String bookType) {
 		super();
