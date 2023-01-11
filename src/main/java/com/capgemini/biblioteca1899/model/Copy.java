@@ -65,11 +65,4 @@ public class Copy {
 		this.state = state;
 	}
 	
-	
-	
-	
-	
-
-	
-	
 }

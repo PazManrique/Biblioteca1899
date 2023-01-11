@@ -11,7 +11,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -36,7 +35,6 @@ public class Book {
 	@Column
 	@Enumerated(EnumType.STRING)
 	private BookType type;
-	
 	@OneToMany (cascade = CascadeType.ALL, mappedBy = "book")
 	private List<Copy> copyId;
 
