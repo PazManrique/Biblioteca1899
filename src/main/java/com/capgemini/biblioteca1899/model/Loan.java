@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class Loan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idLoan;
 	@Column
 	private Date startDate;
 	@Column
@@ -27,20 +27,20 @@ public class Loan {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Loan(Long id, Date startDate, Date endDate, Long memberNumber) {
+	public Loan(Long idLoan, Date startDate, Date endDate, Long memberNumber) {
 		super();
-		this.id = id;
+		this.idLoan = idLoan;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.memberNumber = memberNumber;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIdLoan() {
+		return idLoan;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long idLoan) {
+		this.idLoan = idLoan;
 	}
 
 	public Date getStartDate() {

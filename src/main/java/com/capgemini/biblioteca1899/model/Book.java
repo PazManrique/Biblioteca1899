@@ -1,7 +1,9 @@
 package com.capgemini.biblioteca1899.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,8 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,7 +19,7 @@ import jakarta.persistence.Table;
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idBook;
 	@Column
 	private String title;
 	@Column
@@ -34,20 +35,18 @@ public class Book {
 	@Column
 	@Enumerated(EnumType.STRING)
 	private BookType type;
-	@OneToOne
-	@JoinColumn(name="copy_id")
-	private Long copyId;
-	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "book")
+	private List<Copy> copyId;
+
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 
-	public Book(Long id, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
-			String nacionality, BookType type, Long copyId) {
+	public Book(Long idBook, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
+			String nacionality, BookType type, List<Copy> copyId) {
 		super();
-		this.id = id;
+		this.idBook = idBook;
 		this.title = title;
 		this.editorial = editorial;
 		this.year = year;
@@ -58,13 +57,12 @@ public class Book {
 		this.copyId = copyId;
 	}
 
-
-	public Long getId() {
-		return id;
+	public Long getIdBook() {
+		return idBook;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdBook(Long idBook) {
+		this.idBook = idBook;
 	}
 
 	public String getTitle() {
@@ -123,14 +121,15 @@ public class Book {
 		this.type = type;
 	}
 
-	public Long getCopyId() {
+	public List<Copy> getCopyId() {
 		return copyId;
 	}
 
-	public void setCopyId(Long copyId) {
+	public void setCopyId(List<Copy> copyId) {
 		this.copyId = copyId;
 	}
 
 	
+
 	
 }
