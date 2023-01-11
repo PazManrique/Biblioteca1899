@@ -18,7 +18,7 @@ public class CopyController {
 	@Autowired
 	private CopyService copyService;
 	
-	@GetMapping("/stock")
+	@GetMapping("/copy")
 	public String ViewHomeCopy (Model model) {
 		return findPaginatedCopy(1, "book", "asc", model);
 		
