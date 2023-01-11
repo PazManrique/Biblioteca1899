@@ -30,17 +30,17 @@ public class ReaderController {
 		
 	}
 	
-	@GetMapping("/page/{pageNum}")
+	@GetMapping("/readerPage/{pageNumReader}")
 	public String findPaginated(
-			@PathVariable(value="pageNum") int pageNum, 
+			@PathVariable(value="pageNumReader") int pageNumReader, 
 			@RequestParam("sortField") String sortField, 
 			@RequestParam("sortDirection") String sortDirection, 
 			Model model) {
 		
 		int pageSize = 4;
-		Page<Reader>  page=readerService.findPaginated(pageNum, pageSize, sortField, sortDirection);
+		Page<Reader>  page=readerService.findPaginated(pageNumReader, pageSize, sortField, sortDirection);
 		List <Reader> listReaders = page.getContent();
-		model.addAttribute("currentPage",pageNum);
+		model.addAttribute("currentPage",pageNumReader);
 		model.addAttribute("totalPages",page.getTotalPages());
 		model.addAttribute("totalItems",page.getTotalElements());
 		model.addAttribute("sortField",sortField);

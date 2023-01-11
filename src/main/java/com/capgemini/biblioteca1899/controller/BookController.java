@@ -28,7 +28,7 @@ public class BookController {
 		
 	}
 	
-	@GetMapping("/page/{pageNumBookBook}")
+	@GetMapping("/bookPage/{pageNumBook}")
 	public String findPaginatedBook(
 			@PathVariable(value="pageNumBook") int pageNumBook, 
 			@RequestParam("sortField") String sortField, 

@@ -19,23 +19,23 @@
 			<thead>
 				<tr>
 				<th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=idBook&sortDirection=' + ${reverseSortDir}}">ID Libro</a></th>
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=idBook&sortDirection=' + ${reverseSortDir}}">ID Libro</a></th>
 					<th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=title&sortDirection=' + ${reverseSortDir}}">Titulo</a></th>
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=title&sortDirection=' + ${reverseSortDir}}">Titulo</a></th>
 					<th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=editorial&sortDirection=' + ${reverseSortDir}}">Editorial</a></th>
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=editorial&sortDirection=' + ${reverseSortDir}}">Editorial</a></th>
 					<th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=year&sortDirection=' + ${reverseSortDir}}">Año</a></th>
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=year&sortDirection=' + ${reverseSortDir}}">Año</a></th>
 						<th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=authorName&sortDirection=' + ${reverseSortDir}}">Nombre del Autor</a></th>
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=authorName&sortDirection=' + ${reverseSortDir}}">Nombre del Autor</a></th>
 						<th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=authorBirthDate&sortDirection=' + ${reverseSortDir}}">Nacimiento Autor</a></th>
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=authorBirthDate&sortDirection=' + ${reverseSortDir}}">Nacimiento Autor</a></th>
 						<th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=nacionality&sortDirection=' + ${reverseSortDir}}">Nacionalidad</a></th>
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=nacionality&sortDirection=' + ${reverseSortDir}}">Nacionalidad</a></th>
 						<!-- <th><a
 						th:href="@{'/page/' + ${currentPage} + '?sortField=type&sortDirection=' + ${reverseSortDir}}">Tipo</a></th> -->
 						<th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID Copia</a></th>
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID Copia</a></th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -69,18 +69,18 @@
 			<div class="col-sm-3">
 				<span th:each="i:${#numbers.sequence(1, totalPages)}"> <a
 					th:if="${currentPage !=1}"
-					th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection='+ ${sortDir} }">[[${i}]]</a>
+					th:href="@{'/bookPage/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection='+ ${sortDir} }">[[${i}]]</a>
 					<span th:unless="${currentPage !=1}">[[${i}]]</span>
 				</span>
 			</div>
 			<div class="col-sm-1">
 				<a th:if="${currentPage < totalPages}"
-					th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Next</a>
+					th:href="@{'/bookPage/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Next</a>
 				<span th:unless="${currentPage < totalPages}">Proximo</span>
 			</div>
 			<div class="col-sm-1">
 				<a th:if="${currentPage < totalPages}"
-					th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Last</a>
+					th:href="@{'/bookPage/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Last</a>
 				<span th:unless="${currentPage < totalPages}">Ultimo</span>
 			</div>
 		</div>
