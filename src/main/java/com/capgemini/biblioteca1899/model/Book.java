@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,9 +35,9 @@ public class Book {
 	@Column
 	@Enumerated(EnumType.STRING)
 	private BookType type;
-	@OneToOne
-	@JoinColumn(name="copy_id")
-	private Long copyId;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="copy_id", nullable=true)
+	private Copy copyId;
 	
 	public Book() {
 		super();
@@ -45,7 +46,7 @@ public class Book {
 	
 
 	public Book(Long id, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
-			String nacionality, BookType type, Long copyId) {
+			String nacionality, BookType type, Copy copyId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -123,11 +124,11 @@ public class Book {
 		this.type = type;
 	}
 
-	public Long getCopyId() {
+	public Copy getCopyId() {
 		return copyId;
 	}
 
-	public void setCopyId(Long copyId) {
+	public void setCopyId(Copy copyId) {
 		this.copyId = copyId;
 	}
 
