@@ -58,7 +58,7 @@ public class ReaderController {
 	  
 	  @GetMapping("/deleteReader/{memberNumber}") public String
 	  deleteCurso(@PathVariable(value="memberNumber") long memberNumber) {
-	  this.readerService.deleteReaderById(memberNumber); return "redirect:/"; }
+	  this.readerService.deleteReaderById(memberNumber); return "redirect:/reader"; }
 	  
 	  @GetMapping("/updateReader/{memberNumber}") public String
 	  showFormForUpdate(@PathVariable(value="memberNumber") long memberNumber, Model model) { Reader
