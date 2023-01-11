@@ -1,7 +1,9 @@
 package com.capgemini.biblioteca1899.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,7 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -35,15 +37,16 @@ public class Book {
 	@Enumerated(EnumType.STRING)
 	private BookType type;
 	
-	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "book")
+	private List<Copy> copyId;
+
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 
 	public Book(Long idBook, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
-			String nacionality, BookType type) {
+			String nacionality, BookType type, List<Copy> copyId) {
 		super();
 		this.idBook = idBook;
 		this.title = title;
@@ -53,15 +56,14 @@ public class Book {
 		this.authorBirthDate = authorBirthDate;
 		this.nacionality = nacionality;
 		this.type = type;
-		
+		this.copyId = copyId;
 	}
-
 
 	public Long getIdBook() {
 		return idBook;
 	}
 
-	public void setId(Long idBook) {
+	public void setIdBook(Long idBook) {
 		this.idBook = idBook;
 	}
 
@@ -121,8 +123,15 @@ public class Book {
 		this.type = type;
 	}
 
+	public List<Copy> getCopyId() {
+		return copyId;
+	}
 
+	public void setCopyId(List<Copy> copyId) {
+		this.copyId = copyId;
+	}
 
 	
+
 	
 }
