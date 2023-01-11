@@ -19,7 +19,7 @@ import com.capgemini.biblioteca1899.service.reader.ReaderService;
 
 
 @Controller
-public class LibraryController {
+public class ReaderController {
 	
 	@Autowired
 	private ReaderService readerService;
@@ -53,12 +53,12 @@ public class LibraryController {
 		return "reader";
 	}
 	
-	  @PostMapping("/save") public String saveCurso(@ModelAttribute("reader") Reader
-	  reader) { readerService.saveReader(reader); return "redirect:/"; }
+	  @PostMapping("/saveReader") public String saveReader(@ModelAttribute("reader") Reader
+	  reader) { readerService.saveReader(reader); return "redirect:/reader"; }
 	  
 	  @GetMapping("/delete/{memberNumber}") public String
 	  deleteCurso(@PathVariable(value="memberNumber") long memberNumber) {
-	  this.readerService.deleteReaderById(memberNumber); return "redirect:/reader"; }
+	  this.readerService.deleteReaderById(memberNumber); return "redirect:/"; }
 	  
 	  @GetMapping("/update/{memberNumber}") public String
 	  showFormForUpdate(@PathVariable(value="memberNumber") long memberNumber, Model model) { Reader
@@ -78,9 +78,7 @@ public class LibraryController {
 	  
 	  }
 	  
-	  @GetMapping("/newBook") public String ViewNewBook () { return "newBook";
-	  
-	  }
+	 
 	  
 	  @GetMapping("/newLoan") public String ViewNewLoan () { return "newLoan";
 	  
@@ -92,10 +90,7 @@ public class LibraryController {
 	  
 
 	  
-	  @GetMapping("/stock") public String ViewStock () { return "stock";
-	  
-	  }
-	 
+	
 	
 
 
