@@ -46,7 +46,7 @@ public class LibraryController {
 		model.addAttribute("sortField",sortField);
 		model.addAttribute("sortDir", sortDirection);
 		model.addAttribute("reverseSortDir",sortDirection.equals("asc")? "desc" : "asc");
-		model.addAttribute("listCourses",listReaders);
+		model.addAttribute("listReaders",listReaders);
 		
 		
 		
@@ -58,7 +58,7 @@ public class LibraryController {
 	  
 	  @GetMapping("/delete/{memberNumber}") public String
 	  deleteCurso(@PathVariable(value="memberNumber") long memberNumber) {
-	  this.readerService.deleteReaderById(memberNumber); return "redirect:/"; }
+	  this.readerService.deleteReaderById(memberNumber); return "redirect:/reader"; }
 	  
 	  @GetMapping("/update/{memberNumber}") public String
 	  showFormForUpdate(@PathVariable(value="memberNumber") long memberNumber, Model model) { Reader

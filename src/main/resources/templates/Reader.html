@@ -25,12 +25,13 @@
 <td th:text="${reader.phone}"></td>
 <td th:text="${reader.address}"></td>
 <td>
-<a class="btn btn-primary" th:href="@{/update/{id}(id=${reader.id})}">Actualizar</a>
-<a class="btn btn-danger" th:href="@{/delete/{id}(id=${reader.id})}">Eliminar</a>
+<a class="btn btn-primary" th:href="@{/update/{id}(id=${reader.memberNumber})}">Actualizar</a>
+<a class="btn btn-danger" th:href="@{/delete/{id}(id=${reader.memberNumber})}">Eliminar</a>
 </td>
 </tr>
 </tbody>
 </table>
+</div>
 
 <!--  botonera para moverse por las paginas -->
 		<div th:if="${totalPages > 1 }">
