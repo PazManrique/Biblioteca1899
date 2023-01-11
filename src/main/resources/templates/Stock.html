@@ -32,8 +32,8 @@
 						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=authorBirthDate&sortDirection=' + ${reverseSortDir}}">Nacimiento Autor</a></th>
 						<th><a
 						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=nacionality&sortDirection=' + ${reverseSortDir}}">Nacionalidad</a></th>
-						<!-- <th><a
-						th:href="@{'/page/' + ${currentPage} + '?sortField=type&sortDirection=' + ${reverseSortDir}}">Tipo</a></th> -->
+						<th><a
+						th:href="@{'/page/' + ${currentPage} + '?sortField=type&sortDirection=' + ${reverseSortDir}}">Tipo</a></th>
 						<th><a
 						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID Copia</a></th>
 					<th>Acciones</th>
@@ -48,7 +48,7 @@
 					<td th:text="${book.authorName}"></td>
 					<td th:text="${book.authorBirthDate}"></td>
 					<td th:text="${book.nacionality}"></td>
-<!-- 					<td th:text="${book.type}"></td> -->
+ 					<td th:text="${book.type}"></td>
 					<td th:text="${book.copyId}"></td>
 					
 					
