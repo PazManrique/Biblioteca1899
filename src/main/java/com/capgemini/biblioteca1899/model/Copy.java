@@ -16,7 +16,7 @@ public class Copy {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long copyId;
 	@Column
-	private Long id;
+	private Long idBook;
 	@Column
 	@Enumerated(EnumType.STRING)
 	private CopyState state;
@@ -28,10 +28,10 @@ public class Copy {
 	}
 
 
-	public Copy(Long copyId, Long id, CopyState state) {
+	public Copy(Long copyId, Long idBook, CopyState state) {
 		super();
 		this.copyId = copyId;
-		this.id = id;
+		this.idBook = idBook;
 		this.state = state;
 	}
 
@@ -47,12 +47,12 @@ public class Copy {
 
 
 	public Long getId() {
-		return id;
+		return idBook;
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long idBook) {
+		this.idBook = idBook;
 	}
 
 

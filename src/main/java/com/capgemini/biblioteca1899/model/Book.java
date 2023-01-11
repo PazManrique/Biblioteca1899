@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idBook;
 	@Column
 	private String title;
 	@Column
@@ -34,9 +34,7 @@ public class Book {
 	@Column
 	@Enumerated(EnumType.STRING)
 	private BookType type;
-	@OneToOne
-	@JoinColumn(name="copy_id")
-	private Long copyId;
+	
 	
 	public Book() {
 		super();
@@ -44,10 +42,10 @@ public class Book {
 	}
 	
 
-	public Book(Long id, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
-			String nacionality, BookType type, Long copyId) {
+	public Book(Long idBook, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
+			String nacionality, BookType type) {
 		super();
-		this.id = id;
+		this.idBook = idBook;
 		this.title = title;
 		this.editorial = editorial;
 		this.year = year;
@@ -55,16 +53,16 @@ public class Book {
 		this.authorBirthDate = authorBirthDate;
 		this.nacionality = nacionality;
 		this.type = type;
-		this.copyId = copyId;
+		
 	}
 
 
-	public Long getId() {
-		return id;
+	public Long getIdBook() {
+		return idBook;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long idBook) {
+		this.idBook = idBook;
 	}
 
 	public String getTitle() {
@@ -123,13 +121,7 @@ public class Book {
 		this.type = type;
 	}
 
-	public Long getCopyId() {
-		return copyId;
-	}
 
-	public void setCopyId(Long copyId) {
-		this.copyId = copyId;
-	}
 
 	
 	
