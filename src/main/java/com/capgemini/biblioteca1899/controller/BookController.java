@@ -48,7 +48,7 @@ public class BookController {
 		
 		
 		
-		return "stock";
+		return "/Book/stock";
 	}
 	
 	  @PostMapping("/saveBook") public String saveBook(@ModelAttribute("book") Book
@@ -61,10 +61,10 @@ public class BookController {
 	  @GetMapping("/updateBook/{idBook}") public String
 	  showFormForUpdate(@PathVariable(value="idBook") long idBook, Model model) { Book
 	  book =bookService.getBookById(idBook); model.addAttribute("book",book);
-	  return "updateBook"; }
+	  return "/Book/updateBook"; }
 	  
 	  @GetMapping("/newBook") public String showNewBookForm(Model model) { Book book
-	  =new Book(); model.addAttribute("book",book); return "newBook"; }
+	  =new Book(); model.addAttribute("book",book); return "/Book/newBook"; }
 	  
 	  
 	  
