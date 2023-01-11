@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
@@ -41,13 +41,14 @@
           <img src="https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" class="card-img-top" alt="Card Image">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">Stock</h5>
-            <a href="#" class="btn btn-primary text-white mt-auto align-self-start">Entrar</a>
+            <a th:href="@{/stock}" class="btn btn-primary text-white mt-auto align-self-start">Entrar</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 </body>
 </html>
 
