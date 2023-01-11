@@ -59,7 +59,7 @@ public class ReaderServiceImpl implements ReaderService {
 		}
 
 		@Override
-		public Page<Reader> findPaginated(int pageNum, int pageSize, String sortField, String sortDirection) {
+		public Page<Reader> findPaginatedReader(int pageNum, int pageSize, String sortField, String sortDirection) {
 			// if reducido --> variable = (pregunta lógica ? true :false)
 
 			Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? 

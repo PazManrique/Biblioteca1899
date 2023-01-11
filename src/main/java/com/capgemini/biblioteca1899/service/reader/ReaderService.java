@@ -13,6 +13,6 @@ public interface ReaderService {
 	Reader getReaderById(long memberNumber);
 	void saveReader(Reader reader);
 	void deleteReaderById(long memberNumber);
-	Page<Reader>findPaginated(int pageNum, int pageSize, String sortField, String sortDirection);
+	Page<Reader>findPaginatedReader(int pageNum, int pageSize, String sortField, String sortDirection);
 
 }

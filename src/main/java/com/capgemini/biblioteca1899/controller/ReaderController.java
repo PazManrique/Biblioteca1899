@@ -26,19 +26,19 @@ public class ReaderController {
 	
 	@GetMapping("/reader")
 	public String ViewHomeReader (Model model) {
-		return findPaginated(1, "name", "asc", model);
+		return findPaginatedReader(1, "name", "asc", model);
 		
 	}
 	
 	@GetMapping("/readerPage/{pageNumReader}")
-	public String findPaginated(
+	public String findPaginatedReader(
 			@PathVariable(value="pageNumReader") int pageNumReader, 
 			@RequestParam("sortField") String sortField, 
 			@RequestParam("sortDirection") String sortDirection, 
 			Model model) {
 		
 		int pageSize = 4;
-		Page<Reader>  page=readerService.findPaginated(pageNumReader, pageSize, sortField, sortDirection);
+		Page<Reader>  page=readerService.findPaginatedReader(pageNumReader, pageSize, sortField, sortDirection);
 		List <Reader> listReaders = page.getContent();
 		model.addAttribute("currentPage",pageNumReader);
 		model.addAttribute("totalPages",page.getTotalPages());
@@ -50,23 +50,23 @@ public class ReaderController {
 		
 		
 		
-		return "reader";
+		return "/Reader/reader";
 	}
 	
 	  @PostMapping("/saveReader") public String saveReader(@ModelAttribute("reader") Reader
 	  reader) { readerService.saveReader(reader); return "redirect:/reader"; }
 	  
-	  @GetMapping("/delete/{memberNumber}") public String
+	  @GetMapping("/deleteReader/{memberNumber}") public String
 	  deleteCurso(@PathVariable(value="memberNumber") long memberNumber) {
 	  this.readerService.deleteReaderById(memberNumber); return "redirect:/"; }
 	  
-	  @GetMapping("/update/{memberNumber}") public String
+	  @GetMapping("/updateReader/{memberNumber}") public String
 	  showFormForUpdate(@PathVariable(value="memberNumber") long memberNumber, Model model) { Reader
 	  reader =readerService.getReaderById(memberNumber); model.addAttribute("reader",reader);
-	  return "updateReader"; }
+	  return "/Reader/updateReader"; }
 	  
 	  @GetMapping("/newReader") public String showNewReaderForm(Model model) { Reader reader
-	  =new Reader(); model.addAttribute("reader",reader); return "newReader"; }
+	  =new Reader(); model.addAttribute("reader",reader); return "/Reader/newReader"; }
 	  
 	  
 	  

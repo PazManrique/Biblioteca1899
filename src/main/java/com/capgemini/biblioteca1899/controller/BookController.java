@@ -54,7 +54,7 @@ public class BookController {
 	  @PostMapping("/saveBook") public String saveBook(@ModelAttribute("book") Book
 	  book) { bookService.saveBook(book); return "redirect:/stock"; }
 	  
-	  @GetMapping("/delete/{idBook}") public String
+	  @GetMapping("/deleteBook/{idBook}") public String
 	  deleteBook(@PathVariable(value="idBook") long idBook) {
 	  this.bookService.deleteBookById(idBook); return "redirect:/stock"; }
 	  

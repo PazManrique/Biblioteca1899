@@ -14,18 +14,18 @@
  
   <div class="row">
     <div class="col-md-8 order-md-1">
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate action="#" th:action="@{/saveReader}" th:object="${reader}" method="post">
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" placeholder="Nombre Completo" value="" required>
+            <input type="text" class="form-control" id="name" placeholder="Nombre Completo" value="" required th:field="*{name}">
             <div class="invalid-feedback">
               Es requerido el nombre
             </div>
           </div>
         <div class="mb-3">
           <label for="phone">Telefono</label>
-          <input type="email" class="form-control" id="phone" placeholder="Ingresa tu telefono" required>
+          <input type="text" class="form-control" id="phone" placeholder="Ingresa tu telefono" required th:field="*{phone}">
           <div class="invalid-feedback">
             Es requerido el telefono
           </div>
@@ -33,7 +33,7 @@
  
         <div class="mb-3">
           <label for="address">Direccion</label>
-          <input type="text" class="form-control" id="address" placeholder="Ingresa tu direccion" required>
+          <input type="text" class="form-control" id="address" placeholder="Ingresa tu direccion" required th:field="*{address}">
           <div class="invalid-feedback">
             Es requerida la direccion
           </div>

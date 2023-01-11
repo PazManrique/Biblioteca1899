@@ -3,55 +3,65 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Lectores</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
 </head>
 <body>
-<h3>Listado de miembros de la biblioteca</h3>
-<a class="btn btn-primary btn-sm mb-3" th:href="@{/newReader}" >Agregar un nuevo miembro</a>
+	<h3>Listado de miembros de la biblioteca</h3>
+	<a class="btn btn-primary btn-sm mb-3" th:href="@{/newReader}">Agregar
+		un nuevo miembro</a>
 
-<div class="container">
-<table class = "table table-striped table-responsive-md">
-<thead>
-<tr>
-<th><a th:href="@{'/readerPage/' + ${currentPage} + '?sortField=name&sortDirection=' + ${reverseSortDir}}">Nombre</a></th>
-<th><a th:href="@{'/readerPage/' + ${currentPage} + '?sortField=phone&sortDirection=' + ${reverseSortDir}}">Telefono</a></th>
-<th><a th:href="@{'/readerPage/' + ${currentPage} + '?sortField=address&sortDirection=' + ${reverseSortDir}}">Direccion</a></th>
-<th>Acciones</th>
-</tr>
-</thead>
-<tbody>
-<tr th:each="reader:${listReaders}">
-<td th:text="${reader.name}"></td>
-<td th:text="${reader.phone}"></td>
-<td th:text="${reader.address}"></td>
-<td>
-<a class="btn btn-primary" th:href="@{/update/{id}(id=${reader.memberNumber})}">Actualizar</a>
-<a class="btn btn-danger" th:href="@{/delete/{id}(id=${reader.memberNumber})}">Eliminar</a>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+	<div class="container">
+		<table class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th><a
+						th:href="@{'/readerPage/' + ${currentPage} + '?sortField=name&sortDirection=' + ${reverseSortDir}}">Nombre</a></th>
+					<th><a
+						th:href="@{'/readerPage/' + ${currentPage} + '?sortField=phone&sortDirection=' + ${reverseSortDir}}">Telefono</a></th>
+					<th><a
+						th:href="@{'/readerPage/' + ${currentPage} + '?sortField=address&sortDirection=' + ${reverseSortDir}}">Direccion</a></th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="reader:${listReaders}">
+					<td th:text="${reader.name}"></td>
+					<td th:text="${reader.phone}"></td>
+					<td th:text="${reader.address}"></td>
+					<td><a class="btn btn-primary"
+						th:href="@{/update/{id}(id=${reader.memberNumber})}">Actualizar</a>
+						<a class="btn btn-danger"
+						th:href="@{/delete/{id}(id=${reader.memberNumber})}">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-<!--  botonera para moverse por las paginas -->
-		<div th:if="${totalPages > 1 }">
-			<div class="row col-sm-10">
-				<div class="col-sm-5">Total Filas: [[${totalItems}]]</div>
-				<div class="col-sm-3">
-				<span th:each="i:${#numbers.sequence(1, totalPages)}">
-				<a th:if="${currentPage !=1}" 
-					th:href="@{'/readerPage/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection='+ ${sortDir} }"			
-				>[[${i}]]</a>
-				<span th:unless="${currentPage !=1}">[[${i}]]</span>
+	<!--  botonera para moverse por las paginas -->
+	<div th:if="${totalPages > 1 }">
+		<div class="row col-sm-10">
+			<div class="col-sm-5">Total Filas: [[${totalItems}]]</div>
+			<div class="col-sm-3">
+				<span th:each="i:${#numbers.sequence(1, totalPages)}"> <a
+					th:if="${currentPage !=1}"
+					th:href="@{'/readerPage/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection='+ ${sortDir} }">[[${i}]]</a>
+					<span th:unless="${currentPage !=1}">[[${i}]]</span>
 				</span>
-				</div>
-		<div class = "col-sm-1">
-		<a th:if="${currentPage < totalPages}" th:href="@{'/readerPage/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Next</a>
-		<span th:unless="${currentPage < totalPages}">Proximo</span>
-		</div>
-		<div class = "col-sm-1">
-		<a th:if="${currentPage < totalPages}" th:href="@{'/readerPage/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Last</a>
-		<span th:unless="${currentPage < totalPages}">Ultimo</span>
+			</div>
+			<div class="col-sm-1">
+				<a th:if="${currentPage < totalPages}"
+					th:href="@{'/readerPage/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Next</a>
+				<span th:unless="${currentPage < totalPages}">Proximo</span>
+			</div>
+			<div class="col-sm-1">
+				<a th:if="${currentPage < totalPages}"
+					th:href="@{'/readerPage/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Last</a>
+				<span th:unless="${currentPage < totalPages}">Ultimo</span>
 			</div>
 		</div>
 	</div>
