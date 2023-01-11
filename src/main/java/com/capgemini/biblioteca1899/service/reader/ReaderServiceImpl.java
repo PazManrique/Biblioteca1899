@@ -59,13 +59,13 @@ public class ReaderServiceImpl implements ReaderService {
 		}
 
 		@Override
-		public Page<Reader> findPaginatedReader(int pageNum, int pageSize, String sortField, String sortDirection) {
+		public Page<Reader> findPaginatedReader(int pageNumReader, int pageSize, String sortField, String sortDirection) {
 			// if reducido --> variable = (pregunta lógica ? true :false)
 
 			Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? 
 					Sort.by(sortField).ascending(): 
 					Sort.by(sortField).descending();
-			Pageable pageable = PageRequest.of(pageNum -1, pageSize, sort);
+			Pageable pageable = PageRequest.of(pageNumReader -1, pageSize, sort);
 			return this.readerRepository.findAll(pageable);
 		}
 

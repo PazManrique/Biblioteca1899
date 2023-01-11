@@ -50,7 +50,7 @@ public class ReaderController {
 		
 		
 		
-		return "/Reader/reader";
+		return "Reader/reader";
 	}
 	
 	  @PostMapping("/saveReader") public String saveReader(@ModelAttribute("reader") Reader
@@ -63,10 +63,12 @@ public class ReaderController {
 	  @GetMapping("/updateReader/{memberNumber}") public String
 	  showFormForUpdate(@PathVariable(value="memberNumber") long memberNumber, Model model) { Reader
 	  reader =readerService.getReaderById(memberNumber); model.addAttribute("reader",reader);
-	  return "/Reader/updateReader"; }
+
+	  return "Reader/updateReader"; }
 	  
 	  @GetMapping("/newReader") public String showNewReaderForm(Model model) { Reader reader
-	  =new Reader(); model.addAttribute("reader",reader); return "/Reader/newReader"; }
+	  =new Reader(); model.addAttribute("reader",reader); return "Reader/newReader"; }
+
 	  
 	  
 	  
