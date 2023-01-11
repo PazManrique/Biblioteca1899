@@ -52,20 +52,20 @@
  
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input id="credit" name="type" type="radio" class="custom-control-input" >
-            <label class="custom-control-label" for="credit">Novela</label>
+            <input id="novela" name="novela" type="radio" class="custom-control-input" th:field="*{type}" th:value="NOVELA">
+            <label class="custom-control-label" for="credit" th:text="NOVELA">Novela</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="debit" name="type" type="radio" class="custom-control-input">
-            <label class="custom-control-label" for="debit">Teatro</label>
+            <input id="teatro" name="teatro" type="radio" class="custom-control-input" th:field="*{type}" th:value="TEATRO">
+            <label class="custom-control-label" for="debit" th:text="TEATRO">Teatro</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="paypal" name="type" type="radio" class="custom-control-input">
-            <label class="custom-control-label" for="paypal">Poesia</label>
+            <input id="poesia" name="poesia" type="radio" class="custom-control-input" th:field="*{type}" th:value="POESIA">
+            <label class="custom-control-label" for="paypal" th:text="POESIA">Poesia</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="paypal" name="type" type="radio" class="custom-control-input">
-            <label class="custom-control-label" for="paypal">Ensayo</label>
+            <input id="ensayo" name="ensayo" type="radio" class="custom-control-input" th:field="*{type}" th:value="ENSAYO">
+            <label class="custom-control-label" for="paypal" th:text="ENSAYO">Ensayo</label>
           </div>
         </div>
         <hr class="mb-4">
