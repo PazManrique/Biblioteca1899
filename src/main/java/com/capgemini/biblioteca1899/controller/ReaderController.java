@@ -56,11 +56,11 @@ public class ReaderController {
 	  @PostMapping("/saveReader") public String saveReader(@ModelAttribute("reader") Reader
 	  reader) { readerService.saveReader(reader); return "redirect:/reader"; }
 	  
-	  @GetMapping("/delete/{memberNumber}") public String
+	  @GetMapping("/deleteReader/{memberNumber}") public String
 	  deleteCurso(@PathVariable(value="memberNumber") long memberNumber) {
-	  this.readerService.deleteReaderById(memberNumber); return "redirect:/"; }
+	  this.readerService.deleteReaderById(memberNumber); return "redirect:/reader"; }
 	  
-	  @GetMapping("/update/{memberNumber}") public String
+	  @GetMapping("/updateReader/{memberNumber}") public String
 	  showFormForUpdate(@PathVariable(value="memberNumber") long memberNumber, Model model) { Reader
 	  reader =readerService.getReaderById(memberNumber); model.addAttribute("reader",reader);
 	  return "Reader/updateReader"; }
