@@ -1,7 +1,10 @@
 package com.capgemini.biblioteca1899.model;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,7 +19,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="books")
-public class Book {
+public class Book implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idBook;
@@ -29,7 +34,8 @@ public class Book {
 	@Column
 	private String authorName;
 	@Column
-	private LocalDate authorBirthDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date authorBirthDate;
 	@Column
 	private String nacionality;
 	@Column
@@ -43,7 +49,7 @@ public class Book {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(Long idBook, String title, String editorial, Integer year, String authorName, LocalDate authorBirthDate,
+	public Book(Long idBook, String title, String editorial, Integer year, String authorName, Date authorBirthDate,
 			String nacionality, BookType type, List<Copy> copyId) {
 		super();
 		this.idBook = idBook;
@@ -97,11 +103,11 @@ public class Book {
 		this.authorName = authorName;
 	}
 
-	public LocalDate getAuthorBirthDate() {
+	public Date getAuthorBirthDate() {
 		return authorBirthDate;
 	}
 
-	public void setAuthorBirthDate(LocalDate authorBirthDate) {
+	public void setAuthorBirthDate(Date authorBirthDate) {
 		this.authorBirthDate = authorBirthDate;
 	}
 

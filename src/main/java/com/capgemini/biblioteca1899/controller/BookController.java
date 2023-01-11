@@ -58,7 +58,7 @@ public class BookController {
 	  deleteBook(@PathVariable(value="idBook") long idBook) {
 	  this.bookService.deleteBookById(idBook); return "redirect:/stock"; }
 	  
-	  @GetMapping("/update/{idBook}") public String
+	  @GetMapping("/updateBook/{idBook}") public String
 	  showFormForUpdate(@PathVariable(value="idBook") long idBook, Model model) { Book
 	  book =bookService.getBookById(idBook); model.addAttribute("book",book);
 	  return "updateBook"; }

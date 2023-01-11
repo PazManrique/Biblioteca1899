@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Nuevo Libro</title>
@@ -15,11 +15,11 @@
  
   <div class="row">
     <div class="col-md-8 order-md-1">
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate action="#" th:action="@{/saveBook}" th:object="${book}" method="post">
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">Autor</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Nombre Autor" value="" required>
+            <label for="author">Autor</label>
+            <input type="text" class="form-control" id="author" placeholder="Nombre Autor" value="" required>
             <div class="invalid-feedback">
               Es requerido el nombre del autor
             </div>
@@ -40,6 +40,14 @@
           </div>
         </div>
         
+            <div class="mb-3">
+          <label for="email">Titulo del Libro</label>
+          <input type="email" class="form-control" id="email" placeholder="Titulo Libro" required>
+          <div class="invalid-feedback">
+            Es requerido el titulo
+          </div>
+        </div>
+        
         <div class="mb-3">
           <label for="username">Editorial</label>
             <input type="text" class="form-control" id="username" placeholder="Ingrese Editorial" required>
@@ -51,7 +59,7 @@
  
         <div class="mb-3">
           <label for="address">Año del libro</label>
-          <input type="date" class="form-control" id="address" placeholder="dd-MM-yyyy" required>
+          <input type="number" class="form-control" id="address" placeholder="yyyy" required>
           <div class="invalid-feedback">
             Es requerido año del libro
           </div>
