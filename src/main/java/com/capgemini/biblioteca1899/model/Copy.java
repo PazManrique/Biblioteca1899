@@ -23,7 +23,7 @@ public class Copy {
 	
 	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn (name="ID_BOOK", nullable=true)
-	private Book book;
+	private Book idBook;
 	
 	@Column
 	@Enumerated(EnumType.STRING)
@@ -34,10 +34,10 @@ public class Copy {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Copy(Long copyId, Book book, CopyState state) {
+	public Copy(Long copyId, Book idBook, CopyState state) {
 		super();
 		this.copyId = copyId;
-		this.book = book;
+		this.idBook = idBook;
 		this.state = state;
 	}
 
@@ -50,11 +50,11 @@ public class Copy {
 	}
 
 	public Book getIdBook() {
-		return book;
+		return idBook;
 	}
 
 	public void setIdBook(Book idBook) {
-		this.book = idBook;
+		this.idBook = idBook;
 	}
 
 	public CopyState getState() {

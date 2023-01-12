@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h3>Listado de copias </h3>
-	<a class="btn btn-primary btn-sm mb-3" th:href="@{/newBook}">Agregar
+	<a class="btn btn-primary btn-sm mb-3" th:href="@{/newCopy}">Agregar
 		una nueva copia</a>
 
 	<div class="container">
@@ -31,13 +31,13 @@
 				<tr th:each="copy:${listCopies}">
 				<td th:text="${copy.copyId}"></td>
 					<td th:text="${copy.state}"></td>
-					<td th:text="${copy.book}"></td>
+					<td th:text="${copy.idBook}"></td>
 					
 					
 					<td><a class="btn btn-primary"
 						th:href="@{/updateCopy/{id}(id=${copy.copyId})}">Actualizar</a>
 						<a class="btn btn-danger"
-						th:href="@{/deleteCopy/{id}(id=${book.copyId})}">Eliminar</a>
+						th:href="@{/deleteCopy/{id}(id=${copy.copyId})}">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>

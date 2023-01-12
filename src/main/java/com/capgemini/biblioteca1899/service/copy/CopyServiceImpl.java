@@ -8,10 +8,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.repository.CopyRepository;
 
+@Service
 public class CopyServiceImpl implements CopyService {
 	// DEPENDENCY INJECTION
 			// CursoServiceImpl (CursoRepository cursoRepository){
