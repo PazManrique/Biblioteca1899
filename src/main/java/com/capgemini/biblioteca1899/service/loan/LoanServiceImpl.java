@@ -56,9 +56,6 @@ public class LoanServiceImpl implements LoanService {
 	@Override
 	public void saveLoan(Book book, Copy copy, Reader reader) {
 			Loan loan = new Loan();
-			loan.setBook(book);
-			loan.setCopy(copy);
-			loan.setReader(reader);
 			loan.setStartDate(LocalDate.now());
 			loan.setEndDate(LocalDate.now().plusDays(30));
 			
