@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,50 +24,93 @@ public class Loan {
 	@Column
 	private Long memberNumber;
 	
+	
+	@OneToOne
+	@JoinColumn(name = "id_book")
+	private Book book;
+
+	
+	@OneToOne
+	@JoinColumn(name = "copy_id")
+	private Copy copy;
+
+
 	public Loan() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Loan(Long idLoan, Date startDate, Date endDate, Long memberNumber) {
+
+	public Loan(Long idLoan, Date startDate, Date endDate, Long memberNumber, Book book, Copy copy) {
 		super();
 		this.idLoan = idLoan;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.memberNumber = memberNumber;
+		this.book = book;
+		this.copy = copy;
 	}
+
 
 	public Long getIdLoan() {
 		return idLoan;
 	}
 
-	public void setId(Long idLoan) {
+
+	public void setIdLoan(Long idLoan) {
 		this.idLoan = idLoan;
 	}
+
 
 	public Date getStartDate() {
 		return startDate;
 	}
 
+
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
+
 
 	public Date getEndDate() {
 		return endDate;
 	}
 
+
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
-	public Long getmemberNumber() {
+
+	public Long getMemberNumber() {
 		return memberNumber;
 	}
 
-	public void setmemberNumber(Long memberNumber) {
+
+	public void setMemberNumber(Long memberNumber) {
 		this.memberNumber = memberNumber;
 	}
+
+
+	public Book getBook() {
+		return book;
+	}
+
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+
+	public Copy getCopy() {
+		return copy;
+	}
+
+
+	public void setCopy(Copy copy) {
+		this.copy = copy;
+	}
+	
 	
 	
 }

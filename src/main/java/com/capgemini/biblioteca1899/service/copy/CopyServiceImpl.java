@@ -26,7 +26,7 @@ public class CopyServiceImpl implements CopyService {
 			private CopyRepository copyRepository;
 			
 			
-			Book book;
+		
 
 			@Override
 			public List<Copy> getAllCopies() {
@@ -73,27 +73,14 @@ public class CopyServiceImpl implements CopyService {
 				return this.copyRepository.findAll(pageable);
 			}
 
-			@Override
-			public Copy getCopyByIdBook() {
-				// TODO Auto-generated method stub
-				return null;
-			}
+		
 
-
-			/*
-			 * Long idBook = book.getIdBook();
-			 * 
-			 * @Override public Copy getCopyByIdBook( ) { Optional<Copy> optionalCopy =
-			 * this.copyRepository.findById(idBook); Copy copyByBook = null; if
-			 * (optionalCopy.isPresent()) { copyByBook = optionalCopy.get(); } else { throw
-			 * new RuntimeException("La copia del siguiente libro no se encuentra nro: " +
-			 * idBook);
-			 * 
-			 * }
-			 * 
-			 * return copyByBook;
-			 * 
-			 * }
-			 */
 			
-}
+		
+			  
+			
+			  
+			  }
+			 
+			
+
