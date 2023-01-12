@@ -1,5 +1,6 @@
 package com.capgemini.biblioteca1899.service.copy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.repository.CopyRepository;
@@ -32,15 +34,15 @@ public class CopyServiceImpl implements CopyService {
 				// Curso c=this.cursoRepository.findById(id).orElse(null);
 				// o usamos el optional
 				Optional<Copy> optionalCopy = this.copyRepository.findById(copyId);
-				Copy reader = null;
+				Copy copy = null;
 				if (optionalCopy.isPresent()) {
-					reader = optionalCopy.get();
+					copy = optionalCopy.get();
 				} else {
 					throw new RuntimeException("La copia no se encuentra nro: " + copyId);
 
 				}
 
-				return reader;
+				return copy;
 			}
 
 			@Override
@@ -66,4 +68,18 @@ public class CopyServiceImpl implements CopyService {
 				return this.copyRepository.findAll(pageable);
 			}
 
-}
+
+			@Override
+			public Copy getCopyByIdBook(Long idBook) {
+				Optional<Copy> optionalCopy = this.copyRepository.findById(idBook);
+				Copy copyByBook = null;
+				if (optionalCopy.isPresent()) {
+					copyByBook = optionalCopy.get();
+				} else {
+					throw new RuntimeException("La copia del siguiente libro no se encuentra nro: " + idBook);
+
+				}
+
+				return copyByBook;
+
+			}}
