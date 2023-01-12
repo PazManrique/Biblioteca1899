@@ -4,10 +4,12 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -21,8 +23,11 @@ public class Loan {
 	private Date startDate;
 	@Column
 	private Date endDate;
-	@Column
-	private Long memberNumber;
+	
+	
+	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
+	  @JoinColumn(name = "member_number", nullable = false)
+	 private Reader reader;
 	
 	
 	@OneToOne
@@ -46,7 +51,6 @@ public class Loan {
 		this.idLoan = idLoan;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.memberNumber = memberNumber;
 		this.book = book;
 		this.copy = copy;
 	}
@@ -82,14 +86,7 @@ public class Loan {
 	}
 
 
-	public Long getMemberNumber() {
-		return memberNumber;
-	}
 
-
-	public void setMemberNumber(Long memberNumber) {
-		this.memberNumber = memberNumber;
-	}
 
 
 	public Book getBook() {

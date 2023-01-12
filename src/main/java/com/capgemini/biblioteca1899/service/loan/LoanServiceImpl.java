@@ -1,5 +1,5 @@
 package com.capgemini.biblioteca1899.service.loan;
 
-public class LoanServiceImpl {
+public class LoanServiceImpl implements LoanService {
 
 }
