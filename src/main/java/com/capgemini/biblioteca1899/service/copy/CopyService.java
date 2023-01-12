@@ -3,7 +3,6 @@ package com.capgemini.biblioteca1899.service.copy;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
 
 import com.capgemini.biblioteca1899.model.Copy;
 

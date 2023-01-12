@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.service.copy.CopyService;
 
-@Controller
 public class CopyController {
 	@Autowired
 	private CopyService copyService;
