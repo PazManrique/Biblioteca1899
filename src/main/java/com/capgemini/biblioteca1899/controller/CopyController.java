@@ -12,17 +12,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.capgemini.biblioteca1899.model.Copy;
+import com.capgemini.biblioteca1899.service.book.BookService;
 import com.capgemini.biblioteca1899.service.copy.CopyService;
 
 public class CopyController {
 	@Autowired
 	private CopyService copyService;
 	
+	@Autowired
+	private BookService bookService;
+	
 	@GetMapping("/copy")
 	public String ViewHomeCopy (Model model) {
 		return findPaginatedCopy(1, "copyId", "asc", model);
 		
 	}
+	
+	/*
+	 * @GetMapping("/copy/{idBook}") public String ViewCopyByIdBook (Model model,
+	 * Copy idBook){ return copyService.getCopyByIdBook(idBook); }
+	 */
 	
 	@GetMapping("/copyPage/{pageNumCopy}")
 	public String findPaginatedCopy(

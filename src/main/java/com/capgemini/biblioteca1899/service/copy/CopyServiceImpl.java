@@ -69,17 +69,19 @@ public class CopyServiceImpl implements CopyService {
 			}
 
 
-			@Override
-			public Copy getCopyByIdBook(Long idBook) {
-				Optional<Copy> optionalCopy = this.copyRepository.findById(idBook);
-				Copy copyByBook = null;
-				if (optionalCopy.isPresent()) {
-					copyByBook = optionalCopy.get();
-				} else {
-					throw new RuntimeException("La copia del siguiente libro no se encuentra nro: " + idBook);
-
-				}
-
-				return copyByBook;
-
-			}}
+			/*
+			 * @Override public Copy getCopyByIdBook(Long idBook) { Optional<Copy>
+			 * optionalCopy = this.copyRepository.findById(idBook); Copy copyByBook = null;
+			 * if (optionalCopy.isPresent()) { copyByBook = optionalCopy.get(); } else {
+			 * throw new
+			 * RuntimeException("La copia del siguiente libro no se encuentra nro: " +
+			 * idBook);
+			 * 
+			 * }
+			 * 
+			 * return copyByBook;
+			 * 
+			 * }
+			 */
+			
+}

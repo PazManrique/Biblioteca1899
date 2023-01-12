@@ -41,7 +41,7 @@ public class Book implements Serializable{
 	@Column
 	@Enumerated(EnumType.STRING)
 	private BookType type;
-	@OneToMany (cascade = CascadeType.ALL, mappedBy = "idBook")
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "book")
 	private List<Copy> copyId;
 
 	public Book() {

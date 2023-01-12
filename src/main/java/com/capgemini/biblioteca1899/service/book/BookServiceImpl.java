@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.capgemini.biblioteca1899.model.Book;
 
 import com.capgemini.biblioteca1899.repository.BookRepository;
+import com.capgemini.biblioteca1899.repository.CopyRepository;
 
 
 @Service
@@ -22,6 +23,9 @@ public class BookServiceImpl implements BookService {
 	// this.curso.Repository=cursoRepository;}
 	@Autowired
 	private BookRepository bookRepository;
+	
+	@Autowired
+	private CopyRepository copyRepository;
 
 	@Override
 	public List<Book> getAllBooks() {
@@ -49,6 +53,11 @@ public class BookServiceImpl implements BookService {
 	public void saveBook(Book book) {
 		this.bookRepository.save(book);
 
+	}
+	
+	@Override
+	public void saveBookCopy(Book book) {
+		this.copyRepository.save(null);
 	}
 
 	@Override

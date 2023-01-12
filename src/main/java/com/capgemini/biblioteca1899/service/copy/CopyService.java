@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
+import com.capgemini.biblioteca1899.model.Book;
 import com.capgemini.biblioteca1899.model.Copy;
 
 public interface CopyService {
-	Copy getCopyByIdBook(Long idBook);
+	/* Copy getCopyByIdBook(Book idBook); */
 	List<Copy> getAllCopies();
 	Copy getCopyById(long copyId);
 	void saveCopy(Copy copy);
