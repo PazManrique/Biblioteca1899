@@ -1,5 +1,6 @@
 package com.capgemini.biblioteca1899.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -20,9 +21,12 @@ public class Loan {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idLoan;
 	@Column
-	private Date startDate;
+	private LocalDate startDate;
 	@Column
-	private Date endDate;
+	private LocalDate endDate;
+	
+	@Column
+	private String responsable;
 	
 	
 	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -46,13 +50,14 @@ public class Loan {
 	}
 
 
-	public Loan(Long idLoan, Date startDate, Date endDate, Long memberNumber, Book book, Copy copy) {
+	public Loan(Long idLoan, LocalDate startDate, LocalDate endDate, Long memberNumber, Book book, Copy copy, String responsable) {
 		super();
 		this.idLoan = idLoan;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.book = book;
 		this.copy = copy;
+		this.responsable = responsable;
 	}
 
 
@@ -66,22 +71,22 @@ public class Loan {
 	}
 
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
@@ -106,6 +111,26 @@ public class Loan {
 
 	public void setCopy(Copy copy) {
 		this.copy = copy;
+	}
+
+
+	public String getResponsable() {
+		return responsable;
+	}
+
+
+	public void setResponsable(String responsable) {
+		this.responsable = responsable;
+	}
+
+
+	public Reader getReader() {
+		return reader;
+	}
+
+
+	public void setReader(Reader reader) {
+		this.reader = reader;
 	}
 	
 	

@@ -2,6 +2,8 @@ package com.capgemini.biblioteca1899.service.loan;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.capgemini.biblioteca1899.model.Book;
 import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.model.Loan;
@@ -20,6 +22,8 @@ public interface LoanService {
 	Boolean canIBorrow(Long copyId);
 
 	void returnLoan(Loan loan);
+	
+	Page<Loan> findPaginatedLoan(int pageNumLoan, int pageSize, String sortField, String sortDirection);
 
 
 
