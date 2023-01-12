@@ -32,15 +32,15 @@ public class CopyServiceImpl implements CopyService {
 				// Curso c=this.cursoRepository.findById(id).orElse(null);
 				// o usamos el optional
 				Optional<Copy> optionalCopy = this.copyRepository.findById(copyId);
-				Copy reader = null;
+				Copy copy = null;
 				if (optionalCopy.isPresent()) {
-					reader = optionalCopy.get();
+					copy = optionalCopy.get();
 				} else {
 					throw new RuntimeException("La copia no se encuentra nro: " + copyId);
 
 				}
 
-				return reader;
+				return copy;
 			}
 
 			@Override

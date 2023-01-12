@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.capgemini.biblioteca1899.model.Book;
+import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.service.book.BookService;
+import com.capgemini.biblioteca1899.service.copy.CopyService;
 
 
 
@@ -21,6 +23,9 @@ import com.capgemini.biblioteca1899.service.book.BookService;
 public class BookController {
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private CopyService copyService;
 	
 	@GetMapping("/stock")
 	public String ViewHomeStock (Model model) {
@@ -52,19 +57,25 @@ public class BookController {
 	}
 	
 	  @PostMapping("/saveBook") public String saveBook(@ModelAttribute("book") Book
-	  book) { bookService.saveBook(book); return "redirect:/stock"; }
+	  book) {
+		  bookService.saveBook(book);
+		  return "redirect:/stock";
+		  }
 	  
 	  @GetMapping("/deleteBook/{idBook}") public String
 	  deleteBook(@PathVariable(value="idBook") long idBook) {
 	  this.bookService.deleteBookById(idBook); return "redirect:/stock"; }
 	  
 	  @GetMapping("/updateBook/{idBook}") public String
-	  showFormForUpdate(@PathVariable(value="idBook") long idBook, Model model) { Book
-	  book =bookService.getBookById(idBook); model.addAttribute("book",book);
+	  showFormForUpdate(@PathVariable(value="idBook") long idBook, Model model) {
+		  Book book = bookService.getBookById(idBook);
+		  model.addAttribute("book",book);
 	  return "/Book/updateBook"; }
 	  
-	  @GetMapping("/newBook") public String showNewBookForm(Model model) { Book book
-	  =new Book(); model.addAttribute("book",book); return "/Book/newBook"; }
+	  @GetMapping("/newBook") public String showNewBookForm(Model model) {
+		  Book book = new Book();
+		  model.addAttribute("book",book);
+		  return "/Book/newBook"; }
 	  
 	  
 	  
