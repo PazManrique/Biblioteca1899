@@ -24,40 +24,41 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
-	@GetMapping("/stock")
-	public String ViewHomeStock (Model model) {
-		return findPaginatedBook(1, "title", "asc", model);
-		
-	}
+	@Autowired
+	private CopyService copyService;
 	
-	@GetMapping("/bookPage/{pageNumBook}")
-	public String findPaginatedBook(
-			@PathVariable(value="pageNumBook") int pageNumBook, 
-			@RequestParam("sortField") String sortField, 
-			@RequestParam("sortDirection") String sortDirection, 
-			Model model) {
-		
-		int pageSize = 4;
-		Page<Book>  page=bookService.findPaginatedBook(pageNumBook, pageSize, sortField, sortDirection);
-		List <Book> listBooks = page.getContent();
-		model.addAttribute("currentPage",pageNumBook);
-		model.addAttribute("totalPages",page.getTotalPages());
-		model.addAttribute("totalItems",page.getTotalElements());
-		model.addAttribute("sortField",sortField);
-		model.addAttribute("sortDir", sortDirection);
-		model.addAttribute("reverseSortDir",sortDirection.equals("asc")? "desc" : "asc");
-		model.addAttribute("listBooks",listBooks);
-		
-		
-		
-		return "/Book/stock";
-	}
 	
+	  @GetMapping("/stock") public String ViewHomeStock (Model model) { return
+	  findPaginatedBook(1, "title", "asc", model);
+	  
+	  }
+	  
+	  
+	  
+	  @GetMapping("/bookPage/{pageNumBook}") public String findPaginatedBook(
+	  
+	  @PathVariable(value="pageNumBook") int pageNumBook,
+	  
+	  @RequestParam("sortField") String sortField,
+	  
+	  @RequestParam("sortDirection") String sortDirection, Model model) {
+	  
+			int pageSize = 4;
+			Page<Book> page = bookService.findPaginatedBook(pageNumBook, pageSize, sortField, sortDirection);
+			List<Book> listBooks = page.getContent();
+			model.addAttribute("currentPage", pageNumBook);
+			model.addAttribute("totalPages", page.getTotalPages());
+			model.addAttribute("totalItems", page.getTotalElements());
+			model.addAttribute("sortField", sortField);
+			model.addAttribute("sortDir", sortDirection);
+			model.addAttribute("reverseSortDir", sortDirection.equals("asc") ? "desc" : "asc");
+			model.addAttribute("listBooks", listBooks);
+			
+	  
+	  return "/Book/stock"; }
+	  
 	  @PostMapping("/saveBook") public String saveBook(@ModelAttribute("book") Book
-	  book) {
-		  bookService.saveBook(book);
-		  return "redirect:/stock";
-		  }
+	  book) { bookService.saveBook(book); return "redirect:/stock"; }
 	  
 	  @GetMapping("/deleteBook/{idBook}") public String
 	  deleteBook(@PathVariable(value="idBook") long idBook) {
@@ -65,8 +66,7 @@ public class BookController {
 	  
 	  @GetMapping("/updateBook/{idBook}") public String
 	  showFormForUpdate(@PathVariable(value="idBook") long idBook, Model model) {
-		  Book book = bookService.getBookById(idBook);
-		  model.addAttribute("book",book);
+	  Book book = bookService.getBookById(idBook); model.addAttribute("book",book);
 	  return "/Book/updateBook"; }
 	  
 	  @GetMapping("/newBook") public String showNewBookForm(Model model) {
@@ -76,9 +76,9 @@ public class BookController {
 	  
 	  @GetMapping("/copy/{idBook}") public String
 	  showInfo(@PathVariable(value="idBook") long idBook, Model model) {
-		  Book book =bookService.getBookById(idBook);
-	  model.addAttribute("book", book);
+		  Copy copy =copyService.getCopyById(idBook);
+	  model.addAttribute("book", copy);
 	  return "/Copy/copy"; }
-	  
+
 }
 	 

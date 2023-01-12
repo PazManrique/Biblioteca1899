@@ -34,8 +34,7 @@
 						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=nacionality&sortDirection=' + ${reverseSortDir}}">Nacionalidad</a></th>
 						<th><a
 						th:href="@{'/page/' + ${currentPage} + '?sortField=type&sortDirection=' + ${reverseSortDir}}">Tipo</a></th>
-						<th><a
-						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID Copia</a></th>
+						
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -49,20 +48,23 @@
 					<td th:text="${book.authorBirthDate}"></td>
 					<td th:text="${book.nacionality}"></td>
  					<td th:text="${book.type}"></td>
-					<td th:text="${book.copyId}"></td>
+ 			
+       
 					
 					
 					<td><a class="btn btn-primary"
 						th:href="@{/updateBook/{id}(id=${book.idBook})}">Actualizar</a>
 						<a class="btn btn-danger"
 						th:href="@{/deleteBook/{id}(id=${book.idBook})}">Eliminar</a>
+						<a class="btn btn-secondary"
+						th:href="@{/copy/{id}(id=${book.idBook})}">Copias</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 
-	<!--  botonera para moverse por las paginas -->
+	 botonera para moverse por las paginas
 	<div th:if="${totalPages > 1 }">
 		<div class="row col-sm-10">
 			<div class="col-sm-5">Total Filas: [[${totalItems}]]</div>
