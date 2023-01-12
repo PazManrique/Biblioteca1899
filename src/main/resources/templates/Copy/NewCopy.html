@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="copyId">Copia ID</label>
-            <input type="text" class="form-control" id="idCopy" placeholder="Copy" value="" checked required th:field="*{copyId}">
+            <input type="text" class="form-control" id="idCopy" placeholder="Id Copy" value="" required th:field="*{copyId}">
             <div class="invalid-feedback">
               Es requerido el id de la copy
             </div>
@@ -35,19 +35,19 @@
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
             <input id="prestado" name="prestado" type="radio" class="custom-control-input"  th:field="*{state}" th:value="PRESTADO">
-            <label class="custom-control-label" for="prestado" th:text="PRESTADO"></label>
+            <label class="custom-control-label" for="prestado" th:text="PRESTADO">Prestado</label>
           </div>
           <div class="custom-control custom-radio">
             <input id="retraso" name="retraso" type="radio" class="custom-control-input" th:field="*{state}" th:value="RETRASO">
-            <label class="custom-control-label" for="retraso" th:text="RETRASO"></label>
+            <label class="custom-control-label" for="retraso" th:text="RETRASO">Retraso</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="biblioteca" name="biblioteca" type="radio" class="custom-control-input" th:field="*{state}" checked th:value="BIBLIOTECA">
-            <label class="custom-control-label" for="biblioteca" th:text="BIBLIOTECA"></label>
+            <input id="biblioteca" name="biblioteca" type="radio" class="custom-control-input" th:field="*{state}" checked required th:value="BIBLIOTECA">
+            <label class="custom-control-label" for="biblioteca" th:text="BIBLIOTECA">Biblioteca</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="reparacion" name="reparacion" type="radio" class="custom-control-input" th:field="*{state}" th:value="REPARACIONs">
-            <label class="custom-control-label" for="reparacion" th:text="REPARACION"></label>
+            <input id="reparacion" name="reparacion" type="radio" class="custom-control-input" th:field="*{state}" th:value="REPARACION">
+            <label class="custom-control-label" for="reparacion" th:text="REPARACION">Reparacion</label>
           </div>
         </div>
         <hr class="mb-4">
