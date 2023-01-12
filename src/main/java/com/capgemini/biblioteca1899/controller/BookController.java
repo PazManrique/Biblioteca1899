@@ -24,9 +24,6 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
-	@Autowired
-	private CopyService copyService;
-	
 	@GetMapping("/stock")
 	public String ViewHomeStock (Model model) {
 		return findPaginatedBook(1, "title", "asc", model);
@@ -77,7 +74,11 @@ public class BookController {
 		  model.addAttribute("book",book);
 		  return "/Book/newBook"; }
 	  
+	  @GetMapping("/copy/{idBook}") public String
+	  showInfo(@PathVariable(value="idBook") long idBook, Model model) {
+		  Book book =bookService.getBookById(idBook);
+	  model.addAttribute("book", book);
+	  return "/Copy/copy"; }
 	  
-	  
-
 }
+	 
