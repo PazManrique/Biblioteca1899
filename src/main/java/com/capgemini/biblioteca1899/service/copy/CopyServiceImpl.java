@@ -12,7 +12,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.capgemini.biblioteca1899.model.Book;
 import com.capgemini.biblioteca1899.model.Copy;
+import com.capgemini.biblioteca1899.repository.BookRepository;
 import com.capgemini.biblioteca1899.repository.CopyRepository;
 
 @Service
@@ -22,6 +24,9 @@ public class CopyServiceImpl implements CopyService {
 			// this.curso.Repository=cursoRepository;}
 			@Autowired
 			private CopyRepository copyRepository;
+			
+			
+			Book book;
 
 			@Override
 			public List<Copy> getAllCopies() {
@@ -68,13 +73,20 @@ public class CopyServiceImpl implements CopyService {
 				return this.copyRepository.findAll(pageable);
 			}
 
+			@Override
+			public Copy getCopyByIdBook() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
 
 			/*
-			 * @Override public Copy getCopyByIdBook(Long idBook) { Optional<Copy>
-			 * optionalCopy = this.copyRepository.findById(idBook); Copy copyByBook = null;
-			 * if (optionalCopy.isPresent()) { copyByBook = optionalCopy.get(); } else {
-			 * throw new
-			 * RuntimeException("La copia del siguiente libro no se encuentra nro: " +
+			 * Long idBook = book.getIdBook();
+			 * 
+			 * @Override public Copy getCopyByIdBook( ) { Optional<Copy> optionalCopy =
+			 * this.copyRepository.findById(idBook); Copy copyByBook = null; if
+			 * (optionalCopy.isPresent()) { copyByBook = optionalCopy.get(); } else { throw
+			 * new RuntimeException("La copia del siguiente libro no se encuentra nro: " +
 			 * idBook);
 			 * 
 			 * }
