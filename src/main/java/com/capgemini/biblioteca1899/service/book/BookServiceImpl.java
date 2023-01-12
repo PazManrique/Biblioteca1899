@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.biblioteca1899.model.Book;
-import com.capgemini.biblioteca1899.model.Copy;
+
 import com.capgemini.biblioteca1899.repository.BookRepository;
 import com.capgemini.biblioteca1899.repository.CopyRepository;
 
@@ -31,12 +31,6 @@ public class BookServiceImpl implements BookService {
 	public List<Book> getAllBooks() {
 
 		return this.bookRepository.findAll();
-	}
-	
-	@Override
-	public List<Copy> getAllCopies() {
-
-		return this.copyRepository.findAll();
 	}
 
 	@Override
@@ -81,17 +75,6 @@ public class BookServiceImpl implements BookService {
 				Sort.by(sortField).descending();
 		Pageable pageable = PageRequest.of(pageNumBook -1, pageSize, sort);
 		return this.bookRepository.findAll(pageable);
-	}
-	
-	@Override
-	public Page<Copy> findPaginatedCopies(int pageNumBook, int pageSize, String sortField, String sortDirection) {
-		// if reducido --> variable = (pregunta lógica ? true :false)
-
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? 
-				Sort.by(sortField).ascending(): 
-				Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumBook -1, pageSize, sort);
-		return this.copyRepository.findAll(pageable);
 	}
 
 

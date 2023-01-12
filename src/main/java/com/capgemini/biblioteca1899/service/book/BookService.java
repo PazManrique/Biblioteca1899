@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import com.capgemini.biblioteca1899.model.Book;
-import com.capgemini.biblioteca1899.model.Copy;
 
 
 public interface BookService {
@@ -15,8 +14,6 @@ public interface BookService {
 	void saveBookCopy(Book book);
 	void deleteBookById(long idBook);
 	Page<Book>findPaginatedBook(int pageNumBook, int pageSize, String sortField, String sortDirection);
-	List<Copy> getAllCopies();
-	Page<Copy> findPaginatedCopies(int pageNumBook, int pageSize, String sortField, String sortDirection);
 
 }
 

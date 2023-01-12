@@ -10,26 +10,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<form action="#" th:action="@{/saveBook}" th:object="${book}" method="post">
-	<div class="container">
-  <div class="py-5 text-center">
-    
-    <h2>Copias libro</h2>
-  </div>
- 
-  <div class="row">
-    <div class="col-md-8 order-md-1">
-        <div class="row">
-        <input type="hidden" th:field="*{idBook}">
-          <div class="col-md-6 mb-3">
-            <label for="copyId">idCopias</label>
-            <input type="text" class="form-control" id="copyId" value="" th:field="*{copyId}">
-          </div>
-    </div>
-  </div>
-  </div>
-  </div>
-  </form>
+
 </body>
 <a th:href="@{/}">Volver a la pagina inicial</a>
 
