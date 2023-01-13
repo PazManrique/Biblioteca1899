@@ -5,10 +5,13 @@ html *{
 }
 body{
     background: #fff !important;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
 }
 
 h3 {
-	font-size: 20px;
+	font-size: 50px;
 	text-align:center;
 }
 

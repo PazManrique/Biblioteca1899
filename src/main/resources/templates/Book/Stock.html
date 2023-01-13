@@ -11,56 +11,69 @@
 <link th:href="@{/styles/style.css}" rel="stylesheet" />
 </head>
 <body>
-	<h3 class="text-center">Listado de libros de la biblioteca</h3>
-	<button type="button" th:href="@{/newBook}" rel="tooltip" class="btn btn-primary btn-sm mb-2" data-original-title="" title="">
-                                    <i class="material-icons">Agregar un nuevo libro</i>
-                                </button>
+	<h3>Listado de libros de la biblioteca</h3>
+	<button type="button" th:href="@{/newBook}" rel="tooltip"
+		class="btn btn-primary btn-sm mb-2" data-original-title="" title="">
+		<i class="material-icons">Agregar un nuevo libro</i>
+	</button>
 	<div class="container">
-		<table class="table table-striped table-responsive-md table-responsive">
+		<table
+			class="table table-striped table-responsive-md table-responsive">
 			<thead>
 				<tr>
-				<th class="text-center"><a
-						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=idBook&sortDirection=' + ${reverseSortDir}}">ID Libro</a></th>
+					<th class="text-center"><a
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=idBook&sortDirection=' + ${reverseSortDir}}">ID
+							Libro</a></th>
 					<th class="text-center"><a
 						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=title&sortDirection=' + ${reverseSortDir}}">Titulo</a></th>
 					<th class="text-center"><a
 						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=editorial&sortDirection=' + ${reverseSortDir}}">Editorial</a></th>
 					<th class="text-center"><a
 						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=year&sortDirection=' + ${reverseSortDir}}">Año</a></th>
-						<th class="text-center"><a
-						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=authorName&sortDirection=' + ${reverseSortDir}}">Nombre del Autor</a></th>
-						<th class="text-center"><a
-						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=authorBirthDate&sortDirection=' + ${reverseSortDir}}">Nacimiento Autor</a></th>
-						<th class="text-center"><a
+					<th class="text-center"><a
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=authorName&sortDirection=' + ${reverseSortDir}}">Nombre
+							del Autor</a></th>
+					<th class="text-center"><a
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=authorBirthDate&sortDirection=' + ${reverseSortDir}}">Nacimiento
+							Autor</a></th>
+					<th class="text-center"><a
 						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=nacionality&sortDirection=' + ${reverseSortDir}}">Nacionalidad</a></th>
-						<th class="text-center"><a
+					<th class="text-center"><a
 						th:href="@{'/page/' + ${currentPage} + '?sortField=type&sortDirection=' + ${reverseSortDir}}">Tipo</a></th>
-						<th class="text-center"><a
-						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID Copia</a></th>
+					<th class="text-center"><a
+						th:href="@{'/bookPage/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID
+							Copia</a></th>
 					<th class="text-center">Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="text-center" th:each="book:${listBooks}">
-				<td class="text-center" th:text="${book.idBook}"></td>
+					<td class="text-center" th:text="${book.idBook}"></td>
 					<td class="text-center" th:text="${book.title}"></td>
 					<td class="text-center" th:text="${book.editorial}"></td>
 					<td class="text-center" th:text="${book.year}"></td>
 					<td class="text-center" th:text="${book.authorName}"></td>
 					<td class="text-center" th:text="${book.authorBirthDate}"></td>
 					<td class="text-center" th:text="${book.nacionality}"></td>
- 					<td class="text-center" th:text="${book.type}"></td>
+					<td class="text-center" th:text="${book.type}"></td>
 					<td class="text-center" th:text="${book.copyId}"></td>
 					<td class="text-center">
-					<button type="button" th:href="@{/newCopy/{id}(id=${book.idBook})}" rel="tooltip" class="btn btn-info btn-sm mb-2" data-original-title="" title="">
-                                    <i class="material-icons">Copia</i>
-                                </button>
-                                <button th:href="@{/updateBook/{id}(id=${book.idBook})}" type="button" rel="tooltip" class="btn btn-success btn-sm mb-2" data-original-title="" title="">
-                                    <i class="material-icons">Actualizar</i>
-                                </button>
-                                <button type="button" th:href="@{/deleteBook/{id}(id=${book.idBook})}" rel="tooltip" class="btn btn-danger btn-sm mb-2" data-original-title="" title="">
-                                    <i class="material-icons">Eliminar</i>
-                              </button>
+						<button type="button"
+							th:href="@{/newCopy/{id}(id=${book.idBook})}" rel="tooltip"
+							class="btn btn-info btn-sm mb-2" data-original-title="" title="">
+							<i class="material-icons">Copia</i>
+						</button>
+						<button th:href="@{/updateBook/{id}(id=${book.idBook})}"
+							type="button" rel="tooltip" class="btn btn-success btn-sm mb-2"
+							data-original-title="" title="">
+							<i class="material-icons">Actualizar</i>
+						</button>
+						<button type="button"
+							th:href="@{/deleteBook/{id}(id=${book.idBook})}" rel="tooltip"
+							class="btn btn-danger btn-sm mb-2" data-original-title=""
+							title="">
+							<i class="material-icons">Eliminar</i>
+						</button>
 					</td>
 				</tr>
 			</tbody>
@@ -91,5 +104,8 @@
 		</div>
 	</div>
 </body>
-<a th:href="@{/}">Volver a la pagina inicial</a>
+<button type="button" th:href="@{/}" rel="tooltip"
+		class="btn btn-secondary btn-sm mb-2" data-original-title="" title="">
+		<i class="material-icons">Volver a la pagina inicial</i>
+	</button>
 </html>
