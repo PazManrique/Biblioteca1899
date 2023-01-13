@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.biblioteca1899.model.Book;
-
+import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.repository.BookRepository;
 import com.capgemini.biblioteca1899.repository.CopyRepository;
 
@@ -50,8 +50,10 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public void saveBook(Book book) {
-		this.bookRepository.save(book);
+	public void saveBook(Book book , List<Copy> copyId) {
+		Book book2 = new Book();
+        book2.setCopyId(copyId);
+		this.bookRepository.save(book2);
 
 	}
 	

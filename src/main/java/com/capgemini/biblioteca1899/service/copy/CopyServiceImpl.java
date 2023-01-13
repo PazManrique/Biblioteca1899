@@ -45,7 +45,6 @@ public class CopyServiceImpl implements CopyService {
 
 			@Override
 			public void saveCopy(Copy copy) {
-				copy.getCopyId().toString();
 				this.copyRepository.save(copy);
 
 			}

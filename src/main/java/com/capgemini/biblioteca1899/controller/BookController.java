@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.capgemini.biblioteca1899.model.Book;
+import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.service.book.BookService;
+import com.capgemini.biblioteca1899.service.copy.CopyService;
 
 
 
@@ -22,6 +24,9 @@ import com.capgemini.biblioteca1899.service.book.BookService;
 public class BookController {
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private CopyService copyService;
 	
 	
 	@GetMapping("/stock")
@@ -40,6 +45,7 @@ public class BookController {
 		int pageSize = 4;
 		Page<Book>  page=bookService.findPaginatedBook(pageNumBook, pageSize, sortField, sortDirection);
 		List <Book> listBooks = page.getContent();
+		List<Copy> listCopies = copyService.getAllCopies();
 		model.addAttribute("currentPage",pageNumBook);
 		model.addAttribute("totalPages",page.getTotalPages());
 		model.addAttribute("totalItems",page.getTotalElements());
@@ -47,6 +53,7 @@ public class BookController {
 		model.addAttribute("sortDir", sortDirection);
 		model.addAttribute("reverseSortDir",sortDirection.equals("asc")? "desc" : "asc");
 		model.addAttribute("listBooks",listBooks);
+		model.addAttribute("listCopies",listCopies);
 		
 		
 		
@@ -54,8 +61,8 @@ public class BookController {
 	}
 	
 	  @PostMapping("/saveBook") public String saveBook(@ModelAttribute("book") Book
-	  book) {
-		  bookService.saveBook(book);
+	  book , List<Copy> copyId) {
+		  bookService.saveBook(book, copyId);
 		  return "redirect:/stock";
 		  }
 	  

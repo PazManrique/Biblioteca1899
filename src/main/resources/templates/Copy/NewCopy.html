@@ -16,13 +16,7 @@
     <div class="col-md-8 order-md-1">
       <form class="needs-validation" novalidate action="#" th:action="@{/saveCopy}" th:object="${copy}" method="post">
         <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="copyId">Copia ID</label>
-            <input type="text" class="form-control" id="idCopy" placeholder="Id Copy" value="" required th:field="*{copyId}">
-            <div class="invalid-feedback">
-              Es requerido el id de la copy
-            </div>
-          </div>
+         <input type="hidden" th:field="*{copyId}">
           <div class="col-md-6 mb-3">
             <label for="idBook">Libro ID</label>
             <input type="text" class="form-control" id="idBook" value="" th:field="*{idBook}">
