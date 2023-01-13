@@ -1,6 +1,7 @@
 package com.capgemini.biblioteca1899.service.loan;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,11 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import com.capgemini.biblioteca1899.model.Book;
-import com.capgemini.biblioteca1899.model.Copy;
+import org.springframework.transaction.annotation.Transactional;
 import com.capgemini.biblioteca1899.model.Loan;
-import com.capgemini.biblioteca1899.model.Reader;
 import com.capgemini.biblioteca1899.repository.LoanRepository;
 
 @Service
@@ -42,29 +40,12 @@ public class LoanServiceImpl implements LoanService {
 		return this.loanRepository.findAll(pageable);
 	}
 
-	
-
-
-
-	
-
 	@Override
 	public Boolean canIBorrow(Long copyId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	@Override
-	public void saveLoan(Loan loan) {
-		
-		  loan.setStartDate(LocalDate.now());
-		  loan.setEndDate(LocalDate.now().plusDays(30));
-		 
-		
-		this.loanRepository.save(loan);
-		
-	}
 
 	
 	@Override
@@ -90,92 +71,36 @@ public class LoanServiceImpl implements LoanService {
 
 		return loan;
 	}
-	
-	
 
-	/*
-	 * @Override
-	 * 
-	 * @Transactional(readOnly = true) public List<Prestamo>
-	 * prestamosPorUsuario(Long idUsuario) { var allPrestamos =
-	 * this.listarPrestamos(); List<Prestamo> prestamos = new ArrayList<>();
-	 * 
-	 * for (Prestamo prestamo : allPrestamos) { if
-	 * (prestamo.getUsuario().getIdUsuario().equals(idUsuario)) {
-	 * prestamos.add(prestamo); } }
-	 * 
-	 * return prestamos; }
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional(readOnly = true) public List<Prestamo>
-	 * prestamosActivosPorUsuario(Long idUsuario) { var userPrestamos =
-	 * this.prestamosPorUsuario(idUsuario); List<Prestamo> prestamos = new
-	 * ArrayList<>();
-	 * 
-	 * for (Prestamo prestamo : userPrestamos) { if (prestamo.getFechaFin() == null)
-	 * { prestamos.add(prestamo); } }
-	 * 
-	 * return prestamos; }
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional(readOnly = true) public List<Prestamo> prestamosActivos() {
-	 * var allPrestamos = this.listarPrestamos(); List<Prestamo> prestamos = new
-	 * ArrayList<>();
-	 * 
-	 * for (Prestamo prestamo : allPrestamos) { if (prestamo.getFechaFin() == null)
-	 * { prestamos.add(prestamo); } }
-	 * 
-	 * return prestamos; }
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional(readOnly = true) public List<Prestamo> prestamosFinalizados()
-	 * { var allPrestamos = this.listarPrestamos(); List<Prestamo> prestamos = new
-	 * ArrayList<>();
-	 * 
-	 * for (Prestamo prestamo : allPrestamos) { if (prestamo.getFechaFin() != null)
-	 * { prestamos.add(prestamo); } }
-	 * 
-	 * return prestamos; }
-	 * 
-	 * @Override public void guardarPrestamo(Libro libro, Copia copia, Usuario
-	 * usuario) { Prestamo prestamo = new Prestamo(); prestamo.setLibro(libro);
-	 * prestamo.setCopia(copia); prestamo.setUsuario(usuario);
-	 * prestamo.setFechaInicio(LocalDate.now());
-	 * copia.setEstado(EstadoCopia.PRESTADO);
-	 * 
-	 * this.prestamosRepository.save(prestamo); }
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional(readOnly = true) public Prestamo buscarPrestamo(Prestamo
-	 * prestamo) { return
-	 * this.prestamosRepository.findById(prestamo.getIdPrestamo()).orElse(null); }
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional public void devolucion(Prestamo prestamo) {
-	 * prestamo.setFechaFin(LocalDate.now());
-	 * prestamo.getCopia().setEstado(EstadoCopia.BIBLIOTECA); }
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional(readOnly = true) public Boolean hayPrestamosPorCopia(Long
-	 * idCopia) { var allPrestamos = this.listarPrestamos(); var index = 0; boolean
-	 * tienePrestamos = false;
-	 * 
-	 * while (index < allPrestamos.size() && !tienePrestamos) { if
-	 * (allPrestamos.get(index).getCopia().getIdCopia().equals(idCopia)) {
-	 * tienePrestamos = true; } index++; }
-	 * 
-	 * return tienePrestamos; }
-	 * 
-	 * @Override
-	 * 
-	 * @Transactional public void eliminar(Prestamo prestamo) {
-	 * this.prestamosRepository.delete(prestamo); }
-	 */
 
+	@Override
+	
+	public List<Loan> getLoansByMemberNumber(long memberNumber) {
+	 
+		var allLoans = this.getAllLoans();
+		List<Loan> loans = new ArrayList<>();
+
+		for (Loan loan : allLoans) {
+			if (loan.getMemberNumber().equals(memberNumber)) {
+				loans.add(loan);
+			}
+		}
+
+		return loans;
+	}
+	
+	@Override
+	public void saveLoan(Loan loan) {
+	
+		
+		  loan.setStartDate(LocalDate.now());
+		  loan.setEndDate(LocalDate.now().plusDays(30));
+		this.loanRepository.save(loan);
+		}
+		
+		
+	
 }
+
+
+

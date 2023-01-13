@@ -14,6 +14,8 @@ public interface LoanService {
 	List<Loan> getAllLoans();
 
 	Loan getLoanById(long idLoan);
+	
+	List<Loan> getLoansByMemberNumber(long memberNumber);
 
 	void deleteLoanById(Long idLoan);
 	
