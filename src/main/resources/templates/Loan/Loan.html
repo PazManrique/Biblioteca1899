@@ -23,18 +23,18 @@
 			<thead>
 				<tr>
 					<th class="text-center"><a
-						th:href="@{'/copyPage/' + ${currentPage} + '?sortField=idLoan&sortDirection=' + ${reverseSortDir}}">ID
+						th:href="@{'/loanPage/' + ${currentPage} + '?sortField=idLoan&sortDirection=' + ${reverseSortDir}}">ID
 							Prestamo</a></th>
 					<th class="text-center"><a
-						th:href="@{'/copyPage/' + ${currentPage} + '?sortField=responsable&sortDirection=' + ${reverseSortDir}}">Responsable</a></th>
+						th:href="@{'/loanPage/' + ${currentPage} + '?sortField=responsable&sortDirection=' + ${reverseSortDir}}">Responsable</a></th>
 					<th class="text-center"><a
-						th:href="@{'/copyPage/' + ${currentPage} + '?sortField=idBook&sortDirection=' + ${reverseSortDir}}">ID
+						th:href="@{'/loanPage/' + ${currentPage} + '?sortField=idBook&sortDirection=' + ${reverseSortDir}}">ID
 							Libro</a></th>
 					<th class="text-center"><a
-						th:href="@{'/copyPage/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID
+						th:href="@{'/loanPage/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID
 							Copia</a></th>
 					<th class="text-center"><a
-						th:href="@{'/copyPage/' + ${currentPage} + '?sortField=memberNumber&sortDirection=' + ${reverseSortDir}}">ID
+						th:href="@{'/loanPage/' + ${currentPage} + '?sortField=memberNumber&sortDirection=' + ${reverseSortDir}}">ID
 							Miembro</a></th>
 					<th class="text-center">Acciones</th>
 
@@ -47,19 +47,16 @@
 					<td class="text-center" th:text="${loan.idBook}"></td>
 					<td class="text-center" th:text="${loan.copyId}"></td>
 					<td class="text-center" th:text="${loan.memberNumber}"></td>
-					<td class="text-center">
-					<a th:href="@{/updateLoan/{id}(id=${loan.idLoan})}"><button 
-							type="button" rel="tooltip" class="btn btn-success btn-sm mb-2"
-							data-original-title="" title="">
-							<i class="material-icons">Editar</i>
-						</button></a>
-						<a th:href="@{/deleteLoan/{id}(id=${loan.idLoan})}"><button type="button"
-							 rel="tooltip"
-							class="btn btn-danger btn-sm mb-2" data-original-title=""
-							title="">
-							<i class="material-icons">Eliminar</i>
-						</button></a>
-					</td>
+					<td class="text-center"><a
+						th:href="@{/updateLoan/{id}(id=${loan.idLoan})}"><button
+								type="button" rel="tooltip" class="btn btn-success btn-sm mb-2"
+								data-original-title="" title="">
+								<i class="material-icons">Editar</i>
+							</button></a> <a th:href="@{/deleteLoan/{id}(id=${loan.idLoan})}"><button
+								type="button" rel="tooltip" class="btn btn-danger btn-sm mb-2"
+								data-original-title="" title="">
+								<i class="material-icons">Eliminar</i>
+							</button></a></td>
 				</tr>
 			</tbody>
 		</table>

@@ -1,7 +1,5 @@
 package com.capgemini.biblioteca1899.model;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,18 +13,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="copies")
+@Table(name = "copies")
 public class Copy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long copyId;
-	
 
-	@ManyToOne (fetch = FetchType.LAZY)
-	@JoinColumn (name="ID_BOOK", nullable=true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_BOOK", nullable = true)
 	private Book book;
 
-	
 	@Column
 	@Enumerated(EnumType.STRING)
 	private CopyState state;
@@ -66,5 +62,5 @@ public class Copy {
 	public void setState(CopyState state) {
 		this.state = state;
 	}
-	
+
 }

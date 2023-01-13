@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.capgemini.biblioteca1899.model.Book;
 import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.repository.BookRepository;
-import com.capgemini.biblioteca1899.repository.CopyRepository;
 
 
 @Service
@@ -23,8 +22,6 @@ public class BookServiceImpl implements BookService {
 	// this.curso.Repository=cursoRepository;}
 	@Autowired
 	private BookRepository bookRepository;
-	
-
 
 	@Override
 	public List<Book> getAllBooks() {
@@ -51,17 +48,16 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void saveBookCopy(Book book, List<Copy> idCopy) {
 		Book book2 = new Book();
-        book2.setCopyId(idCopy);
+		book2.setCopyId(idCopy);
 		this.bookRepository.save(book2);
 
 	}
-	
+
 	@Override
 	public void saveBook(Book book) {
 		this.bookRepository.save(book);
 
 	}
-	
 
 	@Override
 	public void deleteBookById(long idBook) {
@@ -73,12 +69,10 @@ public class BookServiceImpl implements BookService {
 	public Page<Book> findPaginatedBook(int pageNumBook, int pageSize, String sortField, String sortDirection) {
 		// if reducido --> variable = (pregunta lógica ? true :false)
 
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? 
-				Sort.by(sortField).ascending(): 
-				Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumBook -1, pageSize, sort);
+		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending()
+				: Sort.by(sortField).descending();
+		Pageable pageable = PageRequest.of(pageNumBook - 1, pageSize, sort);
 		return this.bookRepository.findAll(pageable);
 	}
-
 
 }

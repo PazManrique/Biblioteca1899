@@ -22,7 +22,7 @@ import com.capgemini.biblioteca1899.service.reader.ReaderService;
 
 @Controller
 public class LoanController {
-	
+
 	@Autowired
 	private LoanService loanService;
 	@Autowired
@@ -31,60 +31,63 @@ public class LoanController {
 	private CopyService copyService;
 	@Autowired
 	private ReaderService readerService;
-	
-	 @GetMapping("/loan") public String ViewHomeStock (Model model) { return
-			  findPaginatedLoan(1, "responsable", "asc", model);
-			  
-			  }
-			  
-			  
-			  @GetMapping("/loanPage/{pageNumLoan}") public String findPaginatedLoan(
-			  
-			  @PathVariable(value="pageNumLoan") int pageNumLoan,
-			  
-			  @RequestParam("sortField") String sortField,
-			  
-			  @RequestParam("sortDirection") String sortDirection, Model model) {
-			  
-					int pageSize = 4;
-					Page<Loan> page = loanService.findPaginatedLoan(pageNumLoan, pageSize, sortField, sortDirection);
-					List<Loan> listLoans = page.getContent();
-					
-					model.addAttribute("currentPage", pageNumLoan);
-					model.addAttribute("totalPages", page.getTotalPages());
-					model.addAttribute("totalItems", page.getTotalElements());
-					model.addAttribute("sortField", sortField);
-					model.addAttribute("sortDir", sortDirection);
-					model.addAttribute("reverseSortDir", sortDirection.equals("asc") ? "desc" : "asc");
-					model.addAttribute("listLoans", listLoans);
-				
-					
-			  
-			  return "/Loan/loan"; }
-	
-			  @PostMapping("/saveLoan")
-				public String saveLoanPrestamo(Loan loan) {
 
-					this.loanService.saveLoan(loan);
+	@GetMapping("/loan")
+	public String ViewHomeStock(Model model) {
+		return findPaginatedLoan(1, "responsable", "asc", model);
 
-					return "redirect:/loan";
-				}
-			  
-			  @GetMapping("/newLoan") public String showNewBookForm(Model model) { Loan loan
-				  =new Loan();
-				  model.addAttribute("loan",loan);
-				  return "/loan/newLoan"; }
-			  
-			
-			  @GetMapping("/deleteLoan/{idLoan}") public String
-			  deleteBook(@PathVariable(value="idLoan") long idLoan) {
-			  this.loanService.deleteLoanById(idLoan); return "redirect:/loan"; }
-			  
-			  @GetMapping("/updateLoan/{idLoan}") public String
-			  showFormForUpdate(@PathVariable(value="idLoan") long idLoan, Model model) {
-				  Loan loan = loanService.getLoanById(idLoan);
-				  model.addAttribute("loan",loan);
-			  return "/loan/updateLoan"; }
-	 
+	}
+
+	@GetMapping("/loanPage/{pageNumLoan}")
+	public String findPaginatedLoan(
+
+			@PathVariable(value = "pageNumLoan") int pageNumLoan,
+
+			@RequestParam("sortField") String sortField,
+
+			@RequestParam("sortDirection") String sortDirection, Model model) {
+
+		int pageSize = 4;
+		Page<Loan> page = loanService.findPaginatedLoan(pageNumLoan, pageSize, sortField, sortDirection);
+		List<Loan> listLoans = page.getContent();
+
+		model.addAttribute("currentPage", pageNumLoan);
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDir", sortDirection);
+		model.addAttribute("reverseSortDir", sortDirection.equals("asc") ? "desc" : "asc");
+		model.addAttribute("listLoans", listLoans);
+
+		return "/Loan/loan";
+	}
+
+	@PostMapping("/saveLoan")
+	public String saveLoanPrestamo(Loan loan) {
+
+		this.loanService.saveLoan(loan);
+
+		return "redirect:/loan";
+	}
+
+	@GetMapping("/newLoan")
+	public String showNewBookForm(Model model) {
+		Loan loan = new Loan();
+		model.addAttribute("loan", loan);
+		return "/loan/newLoan";
+	}
+
+	@GetMapping("/deleteLoan/{idLoan}")
+	public String deleteBook(@PathVariable(value = "idLoan") long idLoan) {
+		this.loanService.deleteLoanById(idLoan);
+		return "redirect:/loan";
+	}
+
+	@GetMapping("/updateLoan/{idLoan}")
+	public String showFormForUpdate(@PathVariable(value = "idLoan") long idLoan, Model model) {
+		Loan loan = loanService.getLoanById(idLoan);
+		model.addAttribute("loan", loan);
+		return "/loan/updateLoan";
+	}
 
 }

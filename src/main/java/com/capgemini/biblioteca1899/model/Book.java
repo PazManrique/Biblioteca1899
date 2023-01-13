@@ -18,8 +18,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="books")
-public class Book implements Serializable{
+@Table(name = "books")
+public class Book implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -41,7 +41,7 @@ public class Book implements Serializable{
 	@Column
 	@Enumerated(EnumType.STRING)
 	private BookType type;
-	@OneToMany (cascade = CascadeType.ALL, mappedBy = "book")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "book")
 	private List<Copy> copyId;
 
 	public Book() {
@@ -135,7 +135,4 @@ public class Book implements Serializable{
 		this.copyId = copyId;
 	}
 
-	
-
-	
 }

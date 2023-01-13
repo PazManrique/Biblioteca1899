@@ -15,26 +15,26 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="loans")
+@Table(name = "loans")
 public class Loan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idLoan;
 	@Column
 	private LocalDate startDate;
-	
+
 	@Column
 	private LocalDate endDate;
-	
+
 	@Column
 	private String responsable;
-	
+
 	@Column
 	private Long memberNumber;
-	
+
 	@Column
 	private Long idBook;
-	
+
 	@Column
 	private Long copyId;
 
@@ -110,10 +110,5 @@ public class Loan {
 	public void setCopyId(Long copyId) {
 		this.copyId = copyId;
 	}
-	
-	
 
-	
-	
-	
 }

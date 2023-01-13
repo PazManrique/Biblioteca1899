@@ -16,26 +16,23 @@ import com.capgemini.biblioteca1899.repository.LoanRepository;
 
 @Service
 public class LoanServiceImpl implements LoanService {
-	
-	
+
 	@Autowired
 	LoanRepository loanRepository;
 
 	@Override
 	public List<Loan> getAllLoans() {
-	
+
 		return this.loanRepository.findAll();
 	}
 
-	
 	@Override
 	public Page<Loan> findPaginatedLoan(int pageNumLoan, int pageSize, String sortField, String sortDirection) {
 		// if reducido --> variable = (pregunta lógica ? true :false)
 
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? 
-				Sort.by(sortField).ascending(): 
-				Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumLoan -1, pageSize, sort);
+		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending()
+				: Sort.by(sortField).descending();
+		Pageable pageable = PageRequest.of(pageNumLoan - 1, pageSize, sort);
 		return this.loanRepository.findAll(pageable);
 	}
 
@@ -45,16 +42,13 @@ public class LoanServiceImpl implements LoanService {
 		return null;
 	}
 
-
-	
 	@Override
 	public void deleteLoanById(Long idLoan) {
-		this.loanRepository.deleteById(idLoan);;
+		this.loanRepository.deleteById(idLoan);
+		;
 
 	}
-	
 
-	
 	@Override
 	public Loan getLoanById(long idLoan) {
 		// Curso c=this.cursoRepository.findById(id).orElse(null);
@@ -71,11 +65,10 @@ public class LoanServiceImpl implements LoanService {
 		return loan;
 	}
 
-
 	@Override
-	
+
 	public List<Loan> getLoansByMemberNumber(long memberNumber) {
-	 
+
 		var allLoans = this.getAllLoans();
 		List<Loan> loans = new ArrayList<>();
 
@@ -87,19 +80,14 @@ public class LoanServiceImpl implements LoanService {
 
 		return loans;
 	}
-	
+
 	@Override
 	public void saveLoan(Loan loan) {
-	
-		
-		  loan.setStartDate(LocalDate.now());
-		  loan.setEndDate(LocalDate.now().plusDays(30));
+
+		loan.setStartDate(LocalDate.now());
+		loan.setEndDate(LocalDate.now().plusDays(30));
 		this.loanRepository.save(loan);
-		}
-		
-		
-	
+	}
+
 }
-
-
 

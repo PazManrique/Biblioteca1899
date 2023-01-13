@@ -17,77 +17,71 @@ import com.capgemini.biblioteca1899.model.Copy;
 import com.capgemini.biblioteca1899.service.book.BookService;
 import com.capgemini.biblioteca1899.service.copy.CopyService;
 
-
-
-
 @Controller
 public class BookController {
 	@Autowired
 	private BookService bookService;
-	
+
 	@Autowired
 	private CopyService copyService;
-	
-	
+
 	@GetMapping("/stock")
-	public String ViewHomeStock (Model model) {
+	public String ViewHomeStock(Model model) {
 		return findPaginatedBook(1, "title", "asc", model);
-		
+
 	}
-	
+
 	@GetMapping("/bookPage/{pageNumBook}")
-	public String findPaginatedBook(
-			@PathVariable(value="pageNumBook") int pageNumBook, 
-			@RequestParam("sortField") String sortField, 
-			@RequestParam("sortDirection") String sortDirection, 
+	public String findPaginatedBook(@PathVariable(value = "pageNumBook") int pageNumBook,
+			@RequestParam("sortField") String sortField, @RequestParam("sortDirection") String sortDirection,
 			Model model) {
-		
+
 		int pageSize = 4;
-		Page<Book>  page=bookService.findPaginatedBook(pageNumBook, pageSize, sortField, sortDirection);
-		List <Book> listBooks = page.getContent();
+		Page<Book> page = bookService.findPaginatedBook(pageNumBook, pageSize, sortField, sortDirection);
+		List<Book> listBooks = page.getContent();
 		List<Copy> listCopies = copyService.getAllCopies();
-		model.addAttribute("currentPage",pageNumBook);
-		model.addAttribute("totalPages",page.getTotalPages());
-		model.addAttribute("totalItems",page.getTotalElements());
-		model.addAttribute("sortField",sortField);
+		model.addAttribute("currentPage", pageNumBook);
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDir", sortDirection);
-		model.addAttribute("reverseSortDir",sortDirection.equals("asc")? "desc" : "asc");
-		model.addAttribute("listBooks",listBooks);
-		model.addAttribute("listCopies",listCopies);
-		
-		
-		
+		model.addAttribute("reverseSortDir", sortDirection.equals("asc") ? "desc" : "asc");
+		model.addAttribute("listBooks", listBooks);
+		model.addAttribute("listCopies", listCopies);
+
 		return "/Book/stock";
 	}
-	
-	  @PostMapping("/saveBook") public String saveBook(@ModelAttribute("book") Book
-	  book) {
-		  bookService.saveBook(book);
-		  return "redirect:/stock";
-		  }
-	  
-	  @PostMapping("/saveBookCopy") public String saveBookCopy(@ModelAttribute("book") Book
-			  book) {
-				  bookService.saveBook(book);
-				  return "redirect:/stock";
-				  }
-	  
-	  @GetMapping("/deleteBook/{idBook}") public String
-	  deleteBook(@PathVariable(value="idBook") long idBook) {
-	  this.bookService.deleteBookById(idBook); return "redirect:/stock"; }
-	  
-	  @GetMapping("/updateBook/{idBook}") public String
-	  showFormForUpdate(@PathVariable(value="idBook") long idBook, Model model) {
-		  Book book = bookService.getBookById(idBook);
-		  model.addAttribute("book",book);
-	  return "/Book/updateBook"; }
-	  
-	  @GetMapping("/newBook") public String showNewBookForm(Model model) {
-		  Book book = new Book();
-		  model.addAttribute("book",book);
-		  return "/Book/newBook"; }
-	  
-	  
-	  
+
+	@PostMapping("/saveBook")
+	public String saveBook(@ModelAttribute("book") Book book) {
+		bookService.saveBook(book);
+		return "redirect:/stock";
+	}
+
+	@PostMapping("/saveBookCopy")
+	public String saveBookCopy(@ModelAttribute("book") Book book) {
+		bookService.saveBook(book);
+		return "redirect:/stock";
+	}
+
+	@GetMapping("/deleteBook/{idBook}")
+	public String deleteBook(@PathVariable(value = "idBook") long idBook) {
+		this.bookService.deleteBookById(idBook);
+		return "redirect:/stock";
+	}
+
+	@GetMapping("/updateBook/{idBook}")
+	public String showFormForUpdate(@PathVariable(value = "idBook") long idBook, Model model) {
+		Book book = bookService.getBookById(idBook);
+		model.addAttribute("book", book);
+		return "/Book/updateBook";
+	}
+
+	@GetMapping("/newBook")
+	public String showNewBookForm(Model model) {
+		Book book = new Book();
+		model.addAttribute("book", book);
+		return "/Book/newBook";
+	}
 
 }
