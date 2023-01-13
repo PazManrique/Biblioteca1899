@@ -50,17 +50,19 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public void saveBook(Book book , List<Copy> copyId) {
+	public void saveBookCopy(Book book, List<Copy> idCopy) {
 		Book book2 = new Book();
-        book2.setCopyId(copyId);
+        book2.setCopyId(idCopy);
 		this.bookRepository.save(book2);
 
 	}
 	
 	@Override
-	public void saveBookCopy(Book book) {
-		this.copyRepository.save(null);
+	public void saveBook(Book book) {
+		this.bookRepository.save(book);
+
 	}
+	
 
 	@Override
 	public void deleteBookById(long idBook) {

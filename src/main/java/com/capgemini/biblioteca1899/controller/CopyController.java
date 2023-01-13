@@ -54,9 +54,9 @@ public class CopyController {
 		return "/Copy/copy";
 	}
 	
-	  @PostMapping("/saveCopy") public String saveBook(@ModelAttribute("copy") Copy
+	  @PostMapping("/saveCopy") public String saveCopy(@ModelAttribute("copy") Copy
 	  copy) {
-		  copyService.saveCopy(copy);return "redirect:/copy"; }
+		  copyService.saveCopy(copy);return "redirect:/stock"; }
 	  
 	  @GetMapping("/deleteCopy/{copyId}") public String
 	  deleteCopy(@PathVariable(value="copyId") long copyId) {

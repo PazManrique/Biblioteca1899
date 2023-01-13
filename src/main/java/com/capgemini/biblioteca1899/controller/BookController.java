@@ -61,10 +61,16 @@ public class BookController {
 	}
 	
 	  @PostMapping("/saveBook") public String saveBook(@ModelAttribute("book") Book
-	  book , List<Copy> copyId) {
-		  bookService.saveBook(book, copyId);
+	  book) {
+		  bookService.saveBook(book);
 		  return "redirect:/stock";
 		  }
+	  
+	  @PostMapping("/saveBookCopy") public String saveBookCopy(@ModelAttribute("book") Book
+			  book) {
+				  bookService.saveBook(book);
+				  return "redirect:/stock";
+				  }
 	  
 	  @GetMapping("/deleteBook/{idBook}") public String
 	  deleteBook(@PathVariable(value="idBook") long idBook) {
