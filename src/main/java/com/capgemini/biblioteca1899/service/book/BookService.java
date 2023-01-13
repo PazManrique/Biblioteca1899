@@ -11,11 +11,11 @@ import com.capgemini.biblioteca1899.model.Copy;
 public interface BookService {
 	List<Book> getAllBooks();
 	Book getBookById(long idBook);
-	/* void saveBook(Book book); */
-	void saveBookCopy(Book book);
+
+	void saveBook(Book book);
 	void deleteBookById(long idBook);
 	Page<Book>findPaginatedBook(int pageNumBook, int pageSize, String sortField, String sortDirection);
-	void saveBook(Book book, List<Copy> copyId);
+	void saveBookCopy(Book book, List<Copy> idCopy);
 
 }
 

@@ -34,10 +34,7 @@ public class CopyController {
 		
 	}
 	
-	/*
-	 * @GetMapping("/copy/{idBook}") public String ViewCopyByIdBook (Model model,
-	 * Copy idBook){ return copyService.getCopyByIdBook(idBook); }
-	 */
+	
 	
 	@GetMapping("/copyPage/{pageNumCopy}")
 	public String findPaginatedCopy(
@@ -62,9 +59,9 @@ public class CopyController {
 		return "/Copy/copy";
 	}
 	
-	  @PostMapping("/saveCopy") public String saveBook(@ModelAttribute("copy") Copy
+	  @PostMapping("/saveCopy") public String saveCopy(@ModelAttribute("copy") Copy
 	  copy) {
-		  copyService.saveCopy(copy);return "redirect:/copy"; }
+		  copyService.saveCopy(copy);return "redirect:/stock"; }
 	  
 	  @GetMapping("/deleteCopy/{copyId}") public String
 	  deleteCopy(@PathVariable(value="copyId") long copyId) {
@@ -79,18 +76,10 @@ public class CopyController {
 	  =new Copy();
 	  model.addAttribute("copy",copy);
 	  return "/Copy/newCopy"; }
+}
 	  
 	  
 	  
 	  
 
 	  
-	  
-		
-		/*
-		 * @GetMapping("/copy/{idBook}") public String
-		 * showFormForCopies(@PathVariable(value="idBook") long idBook, Model model) {
-		 * Copy copy = copyService.getCopyByIdBook(); model.addAttribute("copy",copy);
-		 * return "/Copy/copy"; }
-		 */
-}
