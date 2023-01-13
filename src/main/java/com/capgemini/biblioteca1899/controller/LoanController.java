@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.capgemini.biblioteca1899.model.Book;
@@ -37,7 +38,6 @@ public class LoanController {
 			  }
 			  
 			  
-			  
 			  @GetMapping("/loanPage/{pageNumLoan}") public String findPaginatedLoan(
 			  
 			  @PathVariable(value="pageNumLoan") int pageNumLoan,
@@ -49,9 +49,7 @@ public class LoanController {
 					int pageSize = 4;
 					Page<Loan> page = loanService.findPaginatedLoan(pageNumLoan, pageSize, sortField, sortDirection);
 					List<Loan> listLoans = page.getContent();
-					List<Copy> listCopies = copyService.getAllCopies();
-					List<Book> listBooks = bookService.getAllBooks();
-					List<Reader> listReaders = readerService.getAllReaders();
+					
 					model.addAttribute("currentPage", pageNumLoan);
 					model.addAttribute("totalPages", page.getTotalPages());
 					model.addAttribute("totalItems", page.getTotalElements());
@@ -59,22 +57,34 @@ public class LoanController {
 					model.addAttribute("sortDir", sortDirection);
 					model.addAttribute("reverseSortDir", sortDirection.equals("asc") ? "desc" : "asc");
 					model.addAttribute("listLoans", listLoans);
-					model.addAttribute("listBooks", listBooks);
-					model.addAttribute("listReaders", listReaders);
+				
 					
 			  
 			  return "/Loan/loan"; }
 	
-			  @GetMapping("/loans/saveLoan")
-				public String saveLoanPrestamo(Book book, Copy copy,  Reader reader) {
+			  @PostMapping("/saveLoan")
+				public String saveLoanPrestamo(Loan loan) {
 
-					this.loanService.saveLoan(book, copy, reader);
+					this.loanService.saveLoan(loan);
 
 					return "redirect:/loan";
 				}
 			  
+			  @GetMapping("/newLoan") public String showNewBookForm(Model model) { Loan loan
+				  =new Loan();
+				  model.addAttribute("loan",loan);
+				  return "/loan/newLoan"; }
+			  
 			
-	 
+			  @GetMapping("/deleteLoan/{idLoan}") public String
+			  deleteBook(@PathVariable(value="idLoan") long idLoan) {
+			  this.loanService.deleteLoanById(idLoan); return "redirect:/loan"; }
+			  
+			  @GetMapping("/updateLoan/{idLoan}") public String
+			  showFormForUpdate(@PathVariable(value="idLoan") long idLoan, Model model) {
+				  Loan loan = loanService.getLoanById(idLoan);
+				  model.addAttribute("loan",loan);
+			  return "/loan/updateLoan"; }
 	 
 
 }

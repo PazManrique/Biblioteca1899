@@ -13,11 +13,13 @@ public interface LoanService {
 	
 	List<Loan> getAllLoans();
 
-	List<Loan> getLoansByReader(Long memberNumber);
+	Loan getLoanById(long idLoan);
 
-	void deleteLoan(Loan loan);
+	void deleteLoanById(Long idLoan);
 	
-	void saveLoan(Book book , Copy copy, Reader reader);
+	
+	
+	void saveLoan(Loan loan);
 	
 	Boolean canIBorrow(Long copyId);
 

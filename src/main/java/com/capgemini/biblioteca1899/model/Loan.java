@@ -22,116 +22,97 @@ public class Loan {
 	private Long idLoan;
 	@Column
 	private LocalDate startDate;
+	
 	@Column
 	private LocalDate endDate;
 	
 	@Column
 	private String responsable;
 	
+	@Column
+	private Long memberNumber;
 	
-	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	  @JoinColumn(name = "member_number", nullable = false)
-	 private Reader reader;
+	@Column
+	private Long idBook;
 	
-	
-	@OneToOne
-	@JoinColumn(name = "id_book")
-	private Book book;
-
-	
-	@OneToOne
-	@JoinColumn(name = "copy_id")
-	private Copy copy;
-
+	@Column
+	private Long copyId;
 
 	public Loan() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Loan(Long idLoan, LocalDate startDate, LocalDate endDate, Long memberNumber, Book book, Copy copy, String responsable) {
+	public Loan(Long idLoan, LocalDate startDate, LocalDate endDate, String responsable, Long memberNumber, Long idBook,
+			Long copyId) {
 		super();
 		this.idLoan = idLoan;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.book = book;
-		this.copy = copy;
 		this.responsable = responsable;
+		this.memberNumber = memberNumber;
+		this.idBook = idBook;
+		this.copyId = copyId;
 	}
-
 
 	public Long getIdLoan() {
 		return idLoan;
 	}
 
-
 	public void setIdLoan(Long idLoan) {
 		this.idLoan = idLoan;
 	}
-
 
 	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-
 	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-
 
 	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-
-
-
-
-
-	public Book getBook() {
-		return book;
-	}
-
-
-	public void setBook(Book book) {
-		this.book = book;
-	}
-
-
-	public Copy getCopy() {
-		return copy;
-	}
-
-
-	public void setCopy(Copy copy) {
-		this.copy = copy;
-	}
-
 
 	public String getResponsable() {
 		return responsable;
 	}
 
-
 	public void setResponsable(String responsable) {
 		this.responsable = responsable;
 	}
 
-
-	public Reader getReader() {
-		return reader;
+	public Long getMemberNumber() {
+		return memberNumber;
 	}
 
-
-	public void setReader(Reader reader) {
-		this.reader = reader;
+	public void setMemberNumber(Long memberNumber) {
+		this.memberNumber = memberNumber;
 	}
+
+	public Long getIdBook() {
+		return idBook;
+	}
+
+	public void setIdBook(Long idBook) {
+		this.idBook = idBook;
+	}
+
+	public Long getCopyId() {
+		return copyId;
+	}
+
+	public void setCopyId(Long copyId) {
+		this.copyId = copyId;
+	}
+	
+	
+
 	
 	
 	

@@ -2,6 +2,7 @@ package com.capgemini.biblioteca1899.service.loan;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,29 +42,10 @@ public class LoanServiceImpl implements LoanService {
 		return this.loanRepository.findAll(pageable);
 	}
 
-	@Override
-	public List<Loan> getLoansByReader(Long memberNumber) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	@Override
-	public void deleteLoan(Loan loan) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void saveLoan(Book book, Copy copy, Reader reader) {
-			Loan loan = new Loan();
-			loan.setStartDate(LocalDate.now());
-			loan.setEndDate(LocalDate.now().plusDays(30));
-			loan.setBook(book);
-			loan.setCopy(copy);
-			loan.setReader(reader);
-			this.loanRepository.save(loan);
-		}
-		
+
 	
 
 	@Override
@@ -72,10 +54,42 @@ public class LoanServiceImpl implements LoanService {
 		return null;
 	}
 
+
+	@Override
+	public void saveLoan(Loan loan) {
+		
+		  loan.setStartDate(LocalDate.now());
+		  loan.setEndDate(LocalDate.now().plusDays(30));
+		 
+		
+		this.loanRepository.save(loan);
+		
+	}
+
 	
+	@Override
+	public void deleteLoanById(Long idLoan) {
+		this.loanRepository.deleteById(idLoan);;
+
+	}
 	
+
 	
-	
+	@Override
+	public Loan getLoanById(long idLoan) {
+		// Curso c=this.cursoRepository.findById(id).orElse(null);
+		// o usamos el optional
+		Optional<Loan> optionalLoan = this.loanRepository.findById(idLoan);
+		Loan loan = null;
+		if (optionalLoan.isPresent()) {
+			loan = optionalLoan.get();
+		} else {
+			throw new RuntimeException("El prestamo no se encuentra nro: " + idLoan);
+
+		}
+
+		return loan;
+	}
 	
 	
 

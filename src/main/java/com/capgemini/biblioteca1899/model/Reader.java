@@ -23,8 +23,7 @@ public class Reader {
 	@Column
 	private String address;
 	
-	@OneToMany (mappedBy = "reader")
-	private Set<Loan> loans;
+	
 	
 	public Reader() {
 		super();
@@ -71,13 +70,7 @@ public class Reader {
 		this.address = address;
 	}
 
-	public Set<Loan> getLoans() {
-		return loans;
-	}
 
-	public void setLoans(Set<Loan> loans) {
-		this.loans = loans;
-	}
 	
 	
 	

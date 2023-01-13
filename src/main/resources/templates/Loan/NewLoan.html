@@ -11,84 +11,47 @@
 	<div class="container">
   <div class="py-5 text-center">
     
-    <h2>Nuevo Libro</h2>
+    <h2>Nuevo Prestamos</h2>
   </div>
  
   <div class="row">
     <div class="col-md-8 order-md-1">
-      <form class="needs-validation" novalidate action="#" th:action="@{/saveBook}" th:object="${book}" method="post">
+      <form class="needs-validation" novalidate action="#" th:action="@{/saveLoan}" th:object="${loan}" method="post">
         <div class="row">
         
           <div class="col-md-6 mb-3">
-            <label for="authorName">Autor</label>
-            <input type="text" class="form-control" id="authorName" placeholder="Nombre Autor" value="" required th:field="*{authorName}">
+            <label for="authorName">ID Libro</label>
+            <input type="text" class="form-control" id="authorName" placeholder="ID Libro" value="" required th:field="*{idBook}">
             <div class="invalid-feedback">
               Es requerido el nombre del autor
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="authorBirthDate">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="authorBirthDate" placeholder="" value="" required th:field="*{authorBirthDate}">
+            <label for="authorBirthDate">ID Copia</label>
+            <input type="text" class="form-control" id="authorBirthDate" placeholder="ID copia" value="" required th:field="*{copyId}">
             <div class="invalid-feedback">
               Es requerido la fecha de nacimiento
             </div>
           </div>
         
  		<div class="mb-3">
-          <label for="nacionality">Nacionalidad</label>
-          <input type="text" class="form-control" id="nacionality" placeholder="Ingrese Nacionalidad" required th:field="*{nacionality}">
+          <label for="nacionality">Numero de miembro</label>
+          <input type="text" class="form-control" id="nacionality" placeholder="Numero de miembro" required th:field="*{memberNumber}">
           <div class="invalid-feedback">
             Es requerido la nacionalidad
           </div>
         </div>
         
             <div class="mb-3">
-          <label for="titlel">Titulo del Libro</label>
-          <input type="text" class="form-control" id="title" placeholder="Titulo Libro" required th:field="*{title}">
+          <label for="titlel">Responsable</label>
+          <input type="text" class="form-control" id="title" placeholder="Personal de turno" required th:field="*{responsable}">
           <div class="invalid-feedback">
             Es requerido el titulo
           </div>
         </div>
         
-        <div class="mb-3">
-          <label for="editorial">Editorial</label>
-            <input type="text" class="form-control" id="editorial" placeholder="Ingrese Editorial" required th:field="*{editorial}">
-            <div class="invalid-feedback" style="width: 100%;">
-              Es requerido el editorial
-            </div>
-          </div>
         </div>
- 
-        <div class="mb-3">
-          <label for="year">Fecha del libro</label>
-          <input type="number" class="form-control" id="year" placeholder="yyyy" required th:field="*{year}">
-          <div class="invalid-feedback">
-            Es requerido la fecha del libro
-          </div>
-        </div>
-        <hr class="mb-4">
- 
-        <h5 class="mb-3">Tipo de Libro</h5>
- 
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="novela" name="novela" type="radio" class="custom-control-input" checked required th:field="*{type}" th:value="NOVELA">
-            <label class="custom-control-label" for="credit" th:text="NOVELA">Novela</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="teatro" name="teatro" type="radio" class="custom-control-input" th:field="*{type}" th:value="TEATRO">
-            <label class="custom-control-label" for="debit" th:text="TEATRO">Teatro</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="poesia" name="poesia" type="radio" class="custom-control-input" th:field="*{type}" th:value="POESIA">
-            <label class="custom-control-label" for="paypal" th:text="POESIA">Poesia</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="ensayo" name="ensayo" type="radio" class="custom-control-input" th:field="*{type}" th:value="ENSAYO">
-            <label class="custom-control-label" for="paypal" th:text="ENSAYO">Ensayo</label>
-          </div>
-        </div>
-        <hr class="mb-4">
+       
         <button class="btn btn-primary btn-lg btn-block mb-3" type="submit">Guardar</button>
       </form>
     </div>
