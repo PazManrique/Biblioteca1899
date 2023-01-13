@@ -1,0 +1,18 @@
+@charset "UTF-8";
+html *{
+    -webkit-font-smoothing: antialiased;
+    
+}
+
+body{
+	
+    
+   background-image:  url("https://www.tuexperto.com/wp-content/uploads/2023/01/1899-serie-netflix.jpg.webp");
+background-size: cover;
+}
+
+h3 {
+	color: #ffffff;
+}
+
+
