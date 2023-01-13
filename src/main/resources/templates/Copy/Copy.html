@@ -11,6 +11,68 @@
 </head>
 <body>
 
+
+	<div class="container">
+ <div class="py-5 text-center">
+    
+    <h2>Listado de copias</h2>
+  </div>
+		<table class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+				<th><a
+						th:href="@{'/copyPage/' + ${currentPage} + '?sortField=copyId&sortDirection=' + ${reverseSortDir}}">ID Copia</a></th>
+					<th><a
+						th:href="@{'/copyPage/' + ${currentPage} + '?sortField=state&sortDirection=' + ${reverseSortDir}}">Estado</a></th>
+					<th><a
+						th:href="@{'/copyPage/' + ${currentPage} + '?sortField=book&sortDirection=' + ${reverseSortDir}}">ID Libro</a></th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+			
+			
+				<tr th:each="copy:${listCopies}">	
+				<td th:text="${copy.copyId}"></td>
+					<td th:text="${copy.state}"></td>
+					<td th:text="${copy.idBook}"></td>
+					
+					
+					<td><a class="btn btn-primary"
+						th:href="@{/updateCopy/{id}(id=${copy.copyId})}">Actualizar</a>
+						<a class="btn btn-danger"
+						th:href="@{/deleteCopy/{id}(id=${copy.copyId})}">Eliminar</a>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!--  botonera para moverse por las paginas -->
+	<div th:if="${totalPages > 1 }">
+		<div class="row col-sm-10">
+			<div class="col-sm-5">Total Filas: [[${totalItems}]]</div>
+			<div class="col-sm-3">
+				<span th:each="i:${#numbers.sequence(1, totalPages)}"> <a
+					th:if="${currentPage !=1}"
+					th:href="@{'/copyPage/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection='+ ${sortDir} }">[[${i}]]</a>
+					<span th:unless="${currentPage !=1}">[[${i}]]</span>
+				</span>
+			</div>
+			<div class="col-sm-1">
+				<a th:if="${currentPage < totalPages}"
+					th:href="@{'/copyPage/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Next</a>
+				<span th:unless="${currentPage < totalPages}">Proximo</span>
+			</div>
+			<div class="col-sm-1">
+				<a th:if="${currentPage < totalPages}"
+					th:href="@{'/copyPage/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDir}}">Last</a>
+				<span th:unless="${currentPage < totalPages}">Ultimo</span>
+			</div>
+		</div>
+	</div>
+
 </body>
 <a th:href="@{/}">Volver a la pagina inicial</a>
 

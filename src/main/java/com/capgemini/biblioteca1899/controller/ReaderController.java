@@ -75,16 +75,7 @@ public class ReaderController {
 	  
 	  
 	  
-	  
-	  @GetMapping("/loan") public String ViewLoan () { return "loan";
-	  
-	  }
-	  
-	 
-	  
-	  @GetMapping("/newLoan") public String ViewNewLoan () { return "newLoan";
-	  
-	  }
+
 	  
 	  @GetMapping("/") public String ViewNewReader() { return "index";
 	  

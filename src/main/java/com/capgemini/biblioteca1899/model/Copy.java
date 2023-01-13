@@ -21,9 +21,11 @@ public class Copy {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long copyId;
 	
+
 	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn (name="ID_BOOK", nullable=true)
 	private Book book;
+
 	
 	@Column
 	@Enumerated(EnumType.STRING)

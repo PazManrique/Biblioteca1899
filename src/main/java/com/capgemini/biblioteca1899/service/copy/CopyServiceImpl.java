@@ -10,7 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.capgemini.biblioteca1899.model.Book;
 import com.capgemini.biblioteca1899.model.Copy;
+import com.capgemini.biblioteca1899.repository.BookRepository;
 import com.capgemini.biblioteca1899.repository.CopyRepository;
 
 @Service
@@ -20,6 +22,9 @@ public class CopyServiceImpl implements CopyService {
 			// this.curso.Repository=cursoRepository;}
 			@Autowired
 			private CopyRepository copyRepository;
+			
+			
+		
 
 			@Override
 			public List<Copy> getAllCopies() {
@@ -66,20 +71,14 @@ public class CopyServiceImpl implements CopyService {
 				return this.copyRepository.findAll(pageable);
 			}
 
+		
 
-			/*
-			 * @Override public Copy getCopyByIdBook(Long idBook) { Optional<Copy>
-			 * optionalCopy = this.copyRepository.findById(idBook); Copy copyByBook = null;
-			 * if (optionalCopy.isPresent()) { copyByBook = optionalCopy.get(); } else {
-			 * throw new
-			 * RuntimeException("La copia del siguiente libro no se encuentra nro: " +
-			 * idBook);
-			 * 
-			 * }
-			 * 
-			 * return copyByBook;
-			 * 
-			 * }
-			 */
 			
-}
+		
+			  
+			
+			  
+			  }
+			 
+			
+

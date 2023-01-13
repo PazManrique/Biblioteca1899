@@ -17,7 +17,9 @@
     <div class="col-md-8 order-md-1">
       <form class="needs-validation" novalidate action="#" th:action="@{/saveBook}" th:object="${book}" method="post">
         <div class="row">
+
         <input type="hidden" th:field="*{idBook}">
+
           <div class="col-md-6 mb-3">
             <label for="authorName">Autor</label>
             <input type="text" class="form-control" id="authorName" placeholder="Nombre Autor" value="" required th:field="*{authorName}">

@@ -24,8 +24,7 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	private BookRepository bookRepository;
 	
-	@Autowired
-	private CopyRepository copyRepository;
+
 
 	@Override
 	public List<Book> getAllBooks() {
