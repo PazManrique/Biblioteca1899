@@ -32,12 +32,6 @@ public class BookServiceImpl implements BookService {
 
 		return this.bookRepository.findAll();
 	}
-	
-	@Override
-	public List<Copy> getAllCopies() {
-
-		return this.copyRepository.findAll();
-	}
 
 	@Override
 	public Book getBookById(long idBook) {
@@ -56,8 +50,10 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public void saveBook(Book book) {
-		this.bookRepository.save(book);
+	public void saveBook(Book book , List<Copy> copyId) {
+		Book book2 = new Book();
+        book2.setCopyId(copyId);
+		this.bookRepository.save(book2);
 
 	}
 	
@@ -81,17 +77,6 @@ public class BookServiceImpl implements BookService {
 				Sort.by(sortField).descending();
 		Pageable pageable = PageRequest.of(pageNumBook -1, pageSize, sort);
 		return this.bookRepository.findAll(pageable);
-	}
-	
-	@Override
-	public Page<Copy> findPaginatedCopies(int pageNumBook, int pageSize, String sortField, String sortDirection) {
-		// if reducido --> variable = (pregunta lógica ? true :false)
-
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? 
-				Sort.by(sortField).ascending(): 
-				Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumBook -1, pageSize, sort);
-		return this.copyRepository.findAll(pageable);
 	}
 
 

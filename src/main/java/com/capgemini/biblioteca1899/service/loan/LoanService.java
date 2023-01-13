@@ -21,7 +21,7 @@ public interface LoanService {
 	
 	Boolean canIBorrow(Long copyId);
 
-	void returnLoan(Loan loan);
+
 	
 	Page<Loan> findPaginatedLoan(int pageNumLoan, int pageSize, String sortField, String sortDirection);
 

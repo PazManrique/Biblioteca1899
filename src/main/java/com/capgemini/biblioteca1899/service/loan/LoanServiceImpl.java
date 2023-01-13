@@ -25,7 +25,7 @@ public class LoanServiceImpl implements LoanService {
 
 	@Override
 	public List<Loan> getAllLoans() {
-		// TODO Auto-generated method stub
+	
 		return this.loanRepository.findAll();
 	}
 
@@ -58,8 +58,9 @@ public class LoanServiceImpl implements LoanService {
 			Loan loan = new Loan();
 			loan.setStartDate(LocalDate.now());
 			loan.setEndDate(LocalDate.now().plusDays(30));
-			
-
+			loan.setBook(book);
+			loan.setCopy(copy);
+			loan.setReader(reader);
 			this.loanRepository.save(loan);
 		}
 		
@@ -71,11 +72,7 @@ public class LoanServiceImpl implements LoanService {
 		return null;
 	}
 
-	@Override
-	public void returnLoan(Loan loan) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	
 	

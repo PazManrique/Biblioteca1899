@@ -17,6 +17,7 @@ import com.capgemini.biblioteca1899.model.Reader;
 import com.capgemini.biblioteca1899.service.book.BookService;
 import com.capgemini.biblioteca1899.service.copy.CopyService;
 import com.capgemini.biblioteca1899.service.loan.LoanService;
+import com.capgemini.biblioteca1899.service.reader.ReaderService;
 
 @Controller
 public class LoanController {
@@ -27,6 +28,8 @@ public class LoanController {
 	private BookService bookService;
 	@Autowired
 	private CopyService copyService;
+	@Autowired
+	private ReaderService readerService;
 	
 	 @GetMapping("/loan") public String ViewHomeStock (Model model) { return
 			  findPaginatedLoan(1, "responsable", "asc", model);
@@ -46,6 +49,9 @@ public class LoanController {
 					int pageSize = 4;
 					Page<Loan> page = loanService.findPaginatedLoan(pageNumLoan, pageSize, sortField, sortDirection);
 					List<Loan> listLoans = page.getContent();
+					List<Copy> listCopies = copyService.getAllCopies();
+					List<Book> listBooks = bookService.getAllBooks();
+					List<Reader> listReaders = readerService.getAllReaders();
 					model.addAttribute("currentPage", pageNumLoan);
 					model.addAttribute("totalPages", page.getTotalPages());
 					model.addAttribute("totalItems", page.getTotalElements());
@@ -53,6 +59,8 @@ public class LoanController {
 					model.addAttribute("sortDir", sortDirection);
 					model.addAttribute("reverseSortDir", sortDirection.equals("asc") ? "desc" : "asc");
 					model.addAttribute("listLoans", listLoans);
+					model.addAttribute("listBooks", listBooks);
+					model.addAttribute("listReaders", listReaders);
 					
 			  
 			  return "/Loan/loan"; }
